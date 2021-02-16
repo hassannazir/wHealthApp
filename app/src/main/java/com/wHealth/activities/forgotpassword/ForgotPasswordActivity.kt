@@ -27,8 +27,8 @@ class ForgotPasswordActivity : BaseActivity() {
     private val viewModel: ForgotPasswordViewModel by activityScope.viewModel(this)
     private var verCode: String? = " "
     private var verUser: String = " "
-
     var isFromMain: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,9 +53,6 @@ class ForgotPasswordActivity : BaseActivity() {
                 Toast.makeText(this, response.result, Toast.LENGTH_SHORT).show()
             }
             //signUpProgressBar.hide()
-
-
-
         })
 
         verifyCode.setOnClickListener {
@@ -82,22 +79,20 @@ class ForgotPasswordActivity : BaseActivity() {
 
         })
 
-
-
-
-
     }
 
     private fun moveToLoginActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
+
     private fun showVerifyCodeLayout()
     {
         forgetPasswordMainLayout.visibility=GONE
         verifyCodeLayout.visibility= VISIBLE
         newPasswordLayout.visibility=GONE
     }
+
     private fun showNewPassLayout()
     {
         forgetPasswordMainLayout.visibility=GONE
@@ -105,6 +100,7 @@ class ForgotPasswordActivity : BaseActivity() {
         newPasswordLayout.visibility= VISIBLE
 
     }
+
     private fun showMainLayout()
     {
         forgetPasswordMainLayout.visibility= VISIBLE

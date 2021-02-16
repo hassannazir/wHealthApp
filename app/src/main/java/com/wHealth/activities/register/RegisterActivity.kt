@@ -30,6 +30,7 @@ class RegisterActivity : BaseActivity() {
         signUp.setOnClickListener {
             validateAndSignUp()
         }
+
         viewModel.registerSuccessLiveData.observe(this, Observer {response->this
             if(response.status)
             {

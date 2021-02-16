@@ -24,8 +24,7 @@ class LoginViewModel(private val apiInterface: ApiInterface,private val sharedPr
 
                 response.body()?.let { response ->
                     loginSuccessLiveData.postValue(response)
-
-                    sharedPreference.saveUser(response.result.copy(username = username))
+                    sharedPreference.saveUser(response.result)
                     sharedPreference.saveToken(response.token)
                 }
 
