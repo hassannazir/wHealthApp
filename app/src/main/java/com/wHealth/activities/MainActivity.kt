@@ -60,8 +60,15 @@ class MainActivity : BaseActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        //showing name and email
         headerView.loggedinUserName.text=user.name
         headerView.loggedinUserEmail.text=user.email
+
+        //View Profile
+        headerView.loggedinUserName.setOnClickListener{
+
+            moveToProfileActivity()
+        }
 
     }
 
@@ -91,6 +98,11 @@ class MainActivity : BaseActivity() {
 
     private fun moveToLoginActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
+
+    private fun moveToProfileActivity() {
+        startActivity(Intent(this, ProfileActivity::class.java))
         finish()
     }
 
