@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.updateprofile.UpdateProfileActivity">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signinText"
+            android:text="Update Profile"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:layout_marginTop="4dp"
+            android:textSize="25sp"
+            android:layout_gravity="center_horizontal"
+            />
+
+    <EditText
+        android:id="@+id/fullNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/prompt_full_name"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/emailEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        
+        />
+
+    <EditText
+        android:id="@+id/phoneNoEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_phone"
+        android:inputType="phone"
+        android:selectAllOnFocus="true"
+        />
+
+    <EditText
+        android:id="@+id/addressEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_address"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        />
+    <EditText
+        android:id="@+id/licenseNoEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_license_no"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        />
+    <EditText
+        android:id="@+id/qualificationEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_qualification"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        />
+
+    <EditText
+        android:id="@+id/experienceEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_experience"
+        android:imeActionLabel="@string/action_sign_up"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        />
+        <Button
+            android:id="@+id/updateProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:enabled="true"
+            android:text="Update"
+            />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

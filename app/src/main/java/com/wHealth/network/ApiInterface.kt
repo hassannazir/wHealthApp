@@ -1,9 +1,6 @@
 
 import com.wHealth.model.*
-import com.wHealth.network.response.ForgotPasswordResponse
-import com.wHealth.network.response.RegisterResponse
-import com.wHealth.network.response.LoginResponse
-import com.wHealth.network.response.UpdatePasswordResponse
+import com.wHealth.network.response.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -45,6 +42,12 @@ interface ApiInterface {
             @Query("newpass") newpass: String
     ): Response<UpdatePasswordResponse>
 
+    @PUT("api/Users")
+    @Headers("Content-Type: application/json")
+    suspend fun updateUserApi(
+        @Query("id") id: Int,
+        @Body appUser: AppUser
+    ): Response<UpdateProfileResponse>
     //Once in a lifetime
 //    companion object {
 //        private var retrofit: Retrofit? = null

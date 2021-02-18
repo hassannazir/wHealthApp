@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class AppUser(
+    val id:Int,
     val name: String,
     val email: String,
     val phoneNo: String,
