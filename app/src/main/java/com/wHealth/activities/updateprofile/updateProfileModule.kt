@@ -9,7 +9,7 @@ import org.koin.dsl.module
 val updateProfileModule = module {
     scope<UpdateProfileActivity> {
         viewModel {
-            UpdateProfileViewModel(apiInterface = get())
+            UpdateProfileViewModel(apiInterface = get(),sharedPreference=get())
         }
     }
 }

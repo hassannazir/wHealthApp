@@ -6,12 +6,11 @@ import com.wHealth.model.AppUser
 import com.wHealth.network.response.RegisterResponse
 import com.wHealth.network.response.UpdatePasswordResponse
 import com.wHealth.network.response.UpdateProfileResponse
+import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class UpdateProfileViewModel(
-    private val apiInterface: ApiInterface
-) : ViewModel(), CoroutineScope {
+class UpdateProfileViewModel(private val apiInterface: ApiInterface, private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default + SupervisorJob() + CoroutineExceptionHandler { _, throwable ->
             //logger.e("TasksViewModel", "Error on coroutine", throwable)
@@ -26,6 +25,7 @@ class UpdateProfileViewModel(
             val appUser = AppUser(id,name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
             val response = apiInterface.updateUserApi(id,appUser)
             if (response.isSuccessful) {
+                 sharedPreference.saveUser(appUser)
                 updateSuccessLiveData.postValue(response.body())
             }
             else
