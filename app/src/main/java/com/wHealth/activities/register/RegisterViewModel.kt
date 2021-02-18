@@ -35,7 +35,7 @@ class RegisterViewModel(
         qualification: String, experience: String) {
 
         launch {
-            val appUser = AppUser(name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
+            val appUser = AppUser(0,name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
             val response = apiInterface.registerUserApi(appUser)
             if (response.isSuccessful) {
                     registerSuccessLiveData.postValue(response.body())

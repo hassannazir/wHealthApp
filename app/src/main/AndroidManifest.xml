@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.login.LoginActivity" />
-        <activity android:name=".activities.register.RegisterActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.WHealth.NoActionBar" />
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
-        <activity android:name=".activities.ProfileActivity"></activity>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.updateprofile.UpdateProfileActivity"></activity>
     </application>
 
 </manifest>

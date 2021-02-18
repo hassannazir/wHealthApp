@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.widget.Toast
 import com.wHealth.R
 import com.wHealth.activities.BaseActivity
-import com.wHealth.activities.register.RegisterActivity
 import com.wHealth.di.activityScope
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.scope.viewModel
 import androidx.lifecycle.Observer
 import com.wHealth.activities.forgotpassword.ForgotPasswordActivity
 import com.wHealth.activities.MainActivity
+import com.wHealth.activities.register.RegisterActivity
 
 class LoginActivity : BaseActivity() {
     private val viewModel: LoginViewModel by activityScope.viewModel(this)

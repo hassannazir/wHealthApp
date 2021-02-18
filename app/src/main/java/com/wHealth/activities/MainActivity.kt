@@ -61,7 +61,7 @@ class MainActivity : BaseActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         //showing name and email
-        headerView.loggedinUserName.text=user.name
+        headerView.loggedinUserName.text=user.username
         headerView.loggedinUserEmail.text=user.email
 
         //View Profile

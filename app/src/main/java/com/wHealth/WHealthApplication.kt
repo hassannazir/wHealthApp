@@ -4,6 +4,7 @@ import android.app.Application
 import com.wHealth.activities.forgotpassword.forgotPasswordModule
 import com.wHealth.activities.register.registerModule
 import com.wHealth.activities.login.loginModule
+import com.wHealth.activities.updateprofile.updateProfileModule
 import com.wHealth.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +17,8 @@ class WHealthApplication : Application() {
             appModule,
             registerModule,
             loginModule,
-                forgotPasswordModule
+                forgotPasswordModule,
+            updateProfileModule
 
         )
 

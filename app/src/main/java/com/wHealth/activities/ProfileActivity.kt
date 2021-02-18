@@ -1,12 +1,13 @@
 package com.wHealth.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View.GONE
-import android.webkit.RenderProcessGoneDetail
 import com.wHealth.R
+import com.wHealth.activities.register.RegisterActivity
 import com.wHealth.activities.register.RegisterViewModel.Companion.CLINIC
 import com.wHealth.activities.register.RegisterViewModel.Companion.PATIENT
+import com.wHealth.activities.updateprofile.UpdateProfileActivity
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.koin.android.ext.android.inject
@@ -16,6 +17,10 @@ class ProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        profileEdit.setOnClickListener {
+            moveToUpdateProfileActivity()
+        }
 
         var user=sharedPreference.getCurrentUser()
         if(user.type==PATIENT || user.type==CLINIC)
@@ -44,5 +49,11 @@ class ProfileActivity : BaseActivity() {
             profileQualification.text=user.qualification
             profileExperience.text=user.experience
         }
+    }
+
+    private fun moveToUpdateProfileActivity()
+    {
+        val i = Intent(this@ProfileActivity, UpdateProfileActivity::class.java)
+        startActivity(i)
     }
 }
