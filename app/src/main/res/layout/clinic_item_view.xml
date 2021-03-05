@@ -55,5 +55,14 @@
             android:layout_toRightOf="@+id/item_image"
             android:layout_below="@+id/item_phone"
             tool:text="Rangpura, Sialkot"/>
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_RegistrationNo"
+            android:layout_toEndOf="@+id/item_image"
+            android:layout_toRightOf="@+id/item_image"
+            android:layout_below="@+id/item_phone"
+            tool:text="Rangpura, Sialkot"/>
+
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
