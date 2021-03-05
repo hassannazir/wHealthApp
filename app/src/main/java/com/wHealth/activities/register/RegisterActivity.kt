@@ -31,6 +31,7 @@ class RegisterActivity : BaseActivity() {
             validateAndSignUp()
         }
 
+        registrationNo.visibility=View.GONE
         viewModel.registerSuccessLiveData.observe(this, Observer {response->this
             if(response.status)
             {
@@ -59,7 +60,7 @@ class RegisterActivity : BaseActivity() {
                         qualification.visibility = View.GONE
                         experience.visibility = View.GONE
                         licenseNo.visibility=View.GONE
-
+                        registrationNo.visibility=View.GONE
                     }
                 R.id.radio_doctor ->
                     if (checked) {
@@ -67,6 +68,7 @@ class RegisterActivity : BaseActivity() {
                         qualification.visibility = View.VISIBLE
                         experience.visibility = View.VISIBLE
                         licenseNo.visibility=View.VISIBLE
+                        registrationNo.visibility=View.GONE
                     }
                 R.id.radio_clinic ->
                     if (checked) {
@@ -74,6 +76,7 @@ class RegisterActivity : BaseActivity() {
                         qualification.visibility = View.GONE
                         experience.visibility = View.GONE
                         licenseNo.visibility=View.GONE
+                        registrationNo.visibility=View.VISIBLE
                     }
             }
         }
@@ -97,8 +100,14 @@ class RegisterActivity : BaseActivity() {
         val exp: String = experience.text.toString().trim()
         val addr: String = address.text.toString().trim()
         val licenseNum: String = licenseNo.text.toString().trim()
+        val regNo:String=registrationNo.text.toString().trim();
 
 
+        if (regNo.isEmpty()) {
+            registrationNo.error = "Registration Number Required"
+            registrationNo.requestFocus()
+            return
+        }
         if (name.isEmpty()) {
             fullName.error = "Name Required"
             fullName.requestFocus()
@@ -153,7 +162,7 @@ class RegisterActivity : BaseActivity() {
 
         //signUpProgressBar.show()
 
-        viewModel.registerUser(name, emailAddress, phoneNumber, addr, uName, pass, type, licenseNum,
+        viewModel.registerUser(regNo,name, emailAddress, phoneNumber, addr, uName, pass, type, licenseNum,
             qual, exp)
     }
 

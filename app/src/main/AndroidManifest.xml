@@ -28,6 +28,7 @@
         <activity android:name=".activities.forgotpassword.ForgotPasswordActivity" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.updateprofile.UpdateProfileActivity"></activity>
+        <activity android:name=".activities.register.RegisterActivity"></activity>
     </application>
 
 </manifest>

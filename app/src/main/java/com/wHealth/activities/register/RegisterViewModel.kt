@@ -31,11 +31,11 @@ class RegisterViewModel(
 
     var registerSuccessLiveData: MutableLiveData<RegisterResponse> = MutableLiveData()
 
-    fun registerUser(name: String, email: String, phoneNo: String, address: String, userName: String, password: String, type: String, licenseNo: String,
+    fun registerUser(registrationNo:String,name: String, email: String, phoneNo: String, address: String, userName: String, password: String, type: String, licenseNo: String,
         qualification: String, experience: String) {
 
         launch {
-            val appUser = AppUser(0,name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
+            val appUser = AppUser(0,registrationNo,name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
             val response = apiInterface.registerUserApi(appUser)
             if (response.isSuccessful) {
                     registerSuccessLiveData.postValue(response.body())

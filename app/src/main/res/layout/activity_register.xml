@@ -39,10 +39,19 @@
     </RadioGroup>
 
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/registrationNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:hint="Registration Number"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/fullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/prompt_full_name"
         android:inputType="text"
         android:selectAllOnFocus="true"

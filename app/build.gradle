@@ -70,6 +70,11 @@ dependencies {
     implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
     implementation "jp.wasabeef:glide-transformations:4.0.1"
     //kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    //cardView
+    //noinspection GradleCompatible
+    //implementation 'com.android.support:recyclerview-v7:26.1.0'
+    //noinspection GradleCompatible
+    //implementation 'com.android.support:cardview-v7:26.1.0'
 
 
 }

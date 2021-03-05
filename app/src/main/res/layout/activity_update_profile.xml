@@ -24,6 +24,15 @@
             android:layout_gravity="center_horizontal"
             />
 
+        <EditText
+            android:id="@+id/regNoEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Registration Number"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:autofillHints="" />
     <EditText
         android:id="@+id/fullNameEdit"
         android:layout_width="match_parent"

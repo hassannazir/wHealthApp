@@ -5,6 +5,7 @@ import java.io.Serializable
 
 data class AppUser(
     val id:Int,
+    val registrationNo: String,
     val name: String,
     val email: String,
     val phoneNo: String,

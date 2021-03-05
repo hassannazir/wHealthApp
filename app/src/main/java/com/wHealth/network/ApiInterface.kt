@@ -48,6 +48,13 @@ interface ApiInterface {
         @Query("id") id: Int,
         @Body appUser: AppUser
     ): Response<UpdateProfileResponse>
+
+    @GET("api/Data")
+    @Headers("Content-Type: application/json")
+    suspend fun getActiveClinicsApi(
+    ): Response<GetAllClinicsResponse>
+
+
     //Once in a lifetime
 //    companion object {
 //        private var retrofit: Retrofit? = null

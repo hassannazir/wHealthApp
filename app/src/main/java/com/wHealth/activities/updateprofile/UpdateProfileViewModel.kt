@@ -18,11 +18,11 @@ class UpdateProfileViewModel(private val apiInterface: ApiInterface, private val
 
     var updateSuccessLiveData: MutableLiveData<UpdateProfileResponse> = MutableLiveData()
 
-    fun updateUser(id:Int ,name: String, email: String, phoneNo: String, address: String, userName: String, password: String, type: String, licenseNo: String,
+    fun updateUser(id:Int ,registrationNo:String,name: String, email: String, phoneNo: String, address: String, userName: String, password: String, type: String, licenseNo: String,
         qualification: String, experience: String) {
 
         launch {
-            val appUser = AppUser(id,name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
+            val appUser = AppUser(id,registrationNo,name, email, phoneNo, address, userName, password, type, licenseNo,qualification,experience)
             val response = apiInterface.updateUserApi(id,appUser)
             if (response.isSuccessful) {
                  sharedPreference.saveUser(appUser)

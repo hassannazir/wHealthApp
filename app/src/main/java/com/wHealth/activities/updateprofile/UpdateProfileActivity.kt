@@ -54,16 +54,29 @@ class UpdateProfileActivity : BaseActivity() {
         addressEdit.setText(user.address)
 
 
-        if(user.type==PATIENT || user.type==CLINIC) {
+        if(user.type==PATIENT ) {
             qualificationEdit.visibility= View.GONE
             experienceEdit.visibility= View.GONE
             licenseNoEdit.visibility= View.GONE
+            regNoEdit.visibility=View.GONE
         }
         else if(user.type==DOCTOR) {
             qualificationEdit.setText(user.qualification)
             licenseNoEdit.setText(user.licenseNo)
             licenseNoEdit.setEnabled(false);
             experienceEdit.setText(user.experience)
+            regNoEdit.visibility=View.GONE
+            qualificationEdit.visibility= View.VISIBLE
+            experienceEdit.visibility= View.VISIBLE
+            licenseNoEdit.visibility= View.VISIBLE
+        }
+        else if( user.type==CLINIC) {
+            regNoEdit.visibility=View.VISIBLE
+            regNoEdit.setText(user.registrationNo)
+            qualificationEdit.visibility= View.GONE
+            experienceEdit.visibility= View.GONE
+            licenseNoEdit.visibility= View.GONE
+            regNoEdit.setEnabled(false)
         }
 
     }
@@ -123,7 +136,7 @@ class UpdateProfileActivity : BaseActivity() {
 
         //signUpProgressBar.show()
 
-        viewModel.updateUser(user.id,name, user.email, phoneNumber, addr, user.username, user.password, user.type, licenseNum,
+        viewModel.updateUser(user.id,user.registrationNo,name, user.email, phoneNumber, addr, user.username, user.password, user.type, licenseNum,
             qual, exp)
     }
 }
