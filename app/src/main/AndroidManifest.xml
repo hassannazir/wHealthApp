@@ -31,6 +31,8 @@
         <activity android:name=".activities.register.RegisterActivity"></activity>
         <activity android:name=".activities.ClinicProfileActivity"></activity>
 
+
+
     </application>
 
 </manifest>

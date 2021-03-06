@@ -1,21 +1,23 @@
 package com.wHealth.activities
 
+import android.R.attr.fragment
+import android.R.attr.itemTextAppearance
 import android.content.Intent
+import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.view.View.GONE
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
+import androidx.fragment.app.FragmentTransaction
 import com.wHealth.R
-import com.wHealth.activities.register.RegisterActivity
-import com.wHealth.activities.register.RegisterViewModel.Companion.CLINIC
 import com.wHealth.activities.register.RegisterViewModel.Companion.PATIENT
 import com.wHealth.activities.ui.home.HomeFragment
-import com.wHealth.activities.updateprofile.UpdateProfileActivity
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_clinic_profile.*
-import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.koin.android.ext.android.inject
+
 
 class ClinicProfileActivity : BaseActivity() {
     private  val sharedPreference: WHealthSharedPreference by inject()
@@ -74,8 +76,14 @@ class ClinicProfileActivity : BaseActivity() {
     {
        val t =  Toast.makeText(this, "YOUR REQUEST HAS BEEN SENT TO CLINIC. WAIT UNTIL CLINIC APPROVES THE REQUEST!!", LENGTH_LONG)
         t.show()
-        val i = Intent(this@ClinicProfileActivity, HomeFragment::class.java)
-        startActivity(i)
+        val fragmentA = HomeFragment()
+
+        supportFragmentManager.beginTransaction().replace(R.id.cf1,fragmentA).commit()
+        sendRequestToClinic.visibility = GONE
+        clinicEmail.visibility = GONE
+
+        //val i = Intent(this@ClinicProfileActivity, HomeFragment::class.java )
+        //startActivity(i)
     }
 
 }
