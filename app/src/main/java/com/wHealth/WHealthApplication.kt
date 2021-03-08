@@ -1,6 +1,7 @@
 package com.wHealth
 
 import android.app.Application
+import com.wHealth.activities.clinicrequest.clinicRequestModule
 import com.wHealth.activities.forgotpassword.forgotPasswordModule
 import com.wHealth.activities.register.registerModule
 import com.wHealth.activities.login.loginModule
@@ -20,7 +21,8 @@ class WHealthApplication : Application() {
             loginModule,
                 forgotPasswordModule,
             updateProfileModule,
-            homeModule
+            homeModule,
+                clinicRequestModule
 
         )
 

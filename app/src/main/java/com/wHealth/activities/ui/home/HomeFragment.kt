@@ -8,8 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wHealth.R
-import com.wHealth.activities.ClinicProfileActivity
-import com.wHealth.activities.ProfileActivity
+import com.wHealth.activities.clinicrequest.ClinicProfileActivity
 import com.wHealth.activities.base.BaseFragment
 import com.wHealth.activities.register.RegisterViewModel.Companion.CLINIC
 import com.wHealth.adapters.ClinicAdapter

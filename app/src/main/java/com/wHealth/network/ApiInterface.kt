@@ -55,6 +55,13 @@ interface ApiInterface {
     ): Response<GetAllClinicsResponse>
 
 
+
+    @GET("api/Requests")
+    @Headers("Content-Type: application/json")
+    suspend fun reqToJoinClinicApi(
+            @Query("docId") docId: Int,
+            @Query("clinicId") clinicId: Int?
+    ): Response<ClinicReqResponse>
     //Once in a lifetime
 //    companion object {
 //        private var retrofit: Retrofit? = null

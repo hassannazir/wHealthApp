@@ -1,26 +1,28 @@
-package com.wHealth.activities
+package com.wHealth.activities.clinicrequest
 
-import android.R.attr.fragment
-import android.R.attr.itemTextAppearance
-import android.content.Intent
-import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.view.View.GONE
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
-import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import com.wHealth.R
+import com.wHealth.activities.BaseActivity
 import com.wHealth.activities.register.RegisterViewModel.Companion.PATIENT
 import com.wHealth.activities.ui.home.HomeFragment
+import com.wHealth.di.activityScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_clinic_profile.*
-import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.scope.viewModel
 
 
 class ClinicProfileActivity : BaseActivity() {
     private  val sharedPreference: WHealthSharedPreference by inject()
+    private val viewModel: ClinicRequestViewModel by activityScope.viewModel(this)
+    var docId:Int=0
+    var clinicId:Int?=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clinic_profile)
@@ -35,6 +37,21 @@ class ClinicProfileActivity : BaseActivity() {
         clinicPhone.text=clickedClinic?.phoneNo
         clinicRegistrationNo.text=clickedClinic?.registrationNo
 
+        docId=user.id
+        clinicId=clickedClinic?.id
+
+         viewModel.cReqSuccessLiveData.observe(this, Observer { response->this
+            if(response.status)
+            {
+                Toast.makeText(this,response.message, Toast.LENGTH_SHORT).show()
+                //moveToMainActivity()
+            }
+            else
+            {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            }
+            //signUpProgressBar.hide()
+        })
 
         if(user.type== PATIENT)
         {
@@ -74,8 +91,9 @@ class ClinicProfileActivity : BaseActivity() {
 
     private fun moveToHome()
     {
-       val t =  Toast.makeText(this, "YOUR REQUEST HAS BEEN SENT TO CLINIC. WAIT UNTIL CLINIC APPROVES THE REQUEST!!", LENGTH_LONG)
-        t.show()
+        viewModel.reqToJoinClinic(docId,clinicId)
+      // val t =  Toast.makeText(this, "YOUR REQUEST HAS BEEN SENT TO CLINIC. WAIT UNTIL CLINIC APPROVES THE REQUEST!!", LENGTH_LONG)
+        //t.show()
         val fragmentA = HomeFragment()
 
         supportFragmentManager.beginTransaction().replace(R.id.cf1,fragmentA).commit()
@@ -85,5 +103,7 @@ class ClinicProfileActivity : BaseActivity() {
         //val i = Intent(this@ClinicProfileActivity, HomeFragment::class.java )
         //startActivity(i)
     }
+
+
 
 }
