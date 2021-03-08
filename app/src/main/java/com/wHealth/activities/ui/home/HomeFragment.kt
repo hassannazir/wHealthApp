@@ -51,7 +51,7 @@ class HomeFragment : BaseFragment(),CellClickListener{
         }
 
 
-        if (sharedPreference.getCurrentUser().type!=CLINIC) {
+
 
 
 
@@ -64,8 +64,8 @@ class HomeFragment : BaseFragment(),CellClickListener{
                     Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
                 }
             })
-            viewModel.getActiveClinics()
-        }
+            viewModel.getUsers()
+
 
 
     }

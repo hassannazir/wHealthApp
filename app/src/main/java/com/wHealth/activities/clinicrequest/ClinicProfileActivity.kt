@@ -8,12 +8,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.wHealth.R
 import com.wHealth.activities.BaseActivity
+import com.wHealth.activities.register.RegisterViewModel.Companion.CLINIC
+import com.wHealth.activities.register.RegisterViewModel.Companion.DOCTOR
 import com.wHealth.activities.register.RegisterViewModel.Companion.PATIENT
 import com.wHealth.activities.ui.home.HomeFragment
 import com.wHealth.di.activityScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_clinic_profile.*
+import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.scope.viewModel
 
@@ -53,10 +56,15 @@ class ClinicProfileActivity : BaseActivity() {
             //signUpProgressBar.hide()
         })
 
-        if(user.type== PATIENT)
+        if(user.type== PATIENT || user.type==CLINIC)
         {
             sendRequestToClinic.visibility = GONE
 
+        }
+        else if(user.type==CLINIC)
+        {
+            RegText.visibility = GONE
+            clinicRegistrationNo.visibility = GONE
         }
         sendRequestToClinic.setOnClickListener({
             moveToHome()

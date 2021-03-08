@@ -15,4 +15,5 @@
     tools:itemCount="10"
     android:id="@+id/clinicRecyclerView"/>
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
