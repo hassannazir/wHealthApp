@@ -61,12 +61,29 @@ interface ApiInterface {
             @Query("Cid") Cid:Int
     ): Response<GetAllClinicsResponse>
 
+    @DELETE("api/Data")
+    @Headers("Content-Type: application/json")
+    suspend fun  getInActiveDoctorsApi(
+            @Query("Cid") Cid:Int
+    ): Response<GetAllClinicsResponse>
+
     @GET("api/Requests")
     @Headers("Content-Type: application/json")
     suspend fun reqToJoinClinicApi(
             @Query("docId") docId: Int,
             @Query("clinicId") clinicId: Int?
     ): Response<ClinicReqResponse>
+
+    @PUT("api/Requests")
+    @Headers("Content-Type: application/json")
+    suspend fun clinicApprovesDocApi(
+            @Query("cid") cid: Int,
+            @Query("did") did: Int
+    ): Response<ClinicReqResponse>
+
+
+
+
     //Once in a lifetime
 //    companion object {
 //        private var retrofit: Retrofit? = null

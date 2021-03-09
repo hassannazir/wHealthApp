@@ -1,4 +1,5 @@
 package com.wHealth.activities.ui.home
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -41,6 +42,9 @@ class HomeFragment : BaseFragment(),CellClickListener{
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         clinicAdapter = ClinicAdapter(this)
@@ -49,11 +53,6 @@ class HomeFragment : BaseFragment(),CellClickListener{
             adapter = clinicAdapter
 
         }
-
-
-
-
-
 
             viewModel.getClinicsSuccessLiveData.observe(viewLifecycleOwner, Observer { response ->
                 if (response.status) {

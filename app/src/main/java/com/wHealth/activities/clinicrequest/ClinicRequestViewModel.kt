@@ -36,4 +36,25 @@ class ClinicRequestViewModel(private val apiInterface: ApiInterface) : ViewModel
         }
     }
 
+    var cApproveDocSuccess: MutableLiveData<ClinicReqResponse> = MutableLiveData()
+
+    fun clinicApprovesDoc(clinicId: Int, docId: Int ) {
+
+        launch {
+            val response = apiInterface.clinicApprovesDocApi(clinicId,docId)
+            if (response.isSuccessful) {
+
+                response.body()?.let { response ->
+                    cApproveDocSuccess.postValue(response)
+
+                }
+
+            }
+            else
+            {
+                cApproveDocSuccess.postValue(null)
+            }
+        }
+    }
+
 }

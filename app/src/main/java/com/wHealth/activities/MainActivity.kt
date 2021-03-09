@@ -19,6 +19,8 @@ import androidx.appcompat.widget.Toolbar
 import com.wHealth.R
 import com.wHealth.activities.forgotpassword.ForgotPasswordActivity
 import com.wHealth.activities.login.LoginActivity
+import com.wHealth.activities.ui.gallery.GalleryFragment
+import com.wHealth.activities.ui.home.HomeFragment
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -39,8 +41,11 @@ class MainActivity : BaseActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "RUKO JARA SABAR KRO. WORK IN PROGRESS HA.", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val fragmentA = GalleryFragment()
+
+            supportFragmentManager.beginTransaction().replace(R.id.fabIc,fragmentA).commit()
+            //Snackbar.make(view, "RUKO JARA SABAR KRO. WORK IN PROGRESS HA.", Snackbar.LENGTH_LONG)
+              //  .setAction("Action", null).show()
         }
 
         val user=sharedPreference.getCurrentUser()
@@ -55,7 +60,7 @@ class MainActivity : BaseActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_inActiveDoctors
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -70,7 +75,10 @@ class MainActivity : BaseActivity() {
             moveToProfileActivity()
         }
 
+
+
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_settings -> {
@@ -81,6 +89,8 @@ class MainActivity : BaseActivity() {
             moveToLoginActivity()
             true
         }
+
+
 
         R.id.action_change_pass->{
           startActivity(   Intent(MainActivity@this, ForgotPasswordActivity::class.java).apply {

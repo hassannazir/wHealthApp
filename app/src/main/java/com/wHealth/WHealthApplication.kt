@@ -5,6 +5,7 @@ import com.wHealth.activities.clinicrequest.clinicRequestModule
 import com.wHealth.activities.forgotpassword.forgotPasswordModule
 import com.wHealth.activities.register.registerModule
 import com.wHealth.activities.login.loginModule
+import com.wHealth.activities.ui.gallery.galleryModule
 import com.wHealth.activities.ui.home.homeModule
 import com.wHealth.activities.updateprofile.updateProfileModule
 import com.wHealth.di.appModule
@@ -22,7 +23,8 @@ class WHealthApplication : Application() {
                 forgotPasswordModule,
             updateProfileModule,
             homeModule,
-                clinicRequestModule
+                clinicRequestModule,
+                galleryModule
 
         )
 
