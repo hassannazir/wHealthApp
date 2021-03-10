@@ -28,7 +28,7 @@ class  ClinicProfileActivity : BaseActivity() {
     private val viewModel: ClinicRequestViewModel by activityScope.viewModel(this)
     var docId:Int=0
     var clinicId:Int=0
-    var cidd:Int=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clinic_profile)
@@ -45,8 +45,18 @@ class  ClinicProfileActivity : BaseActivity() {
         clinicPhone.text=clickedClinic.phoneNo
         clinicRegistrationNo.text=clickedClinic.registrationNo
 
-        docId=clickedClinic.id
-        clinicId= user.id
+
+
+        if(user.type==CLINIC)
+        {
+            clinicId= user.id
+            docId=clickedClinic.id
+        }
+        else if(user.type==DOCTOR)
+        {
+            clinicId= clickedClinic.id
+            docId=user.id
+        }
 
 
          viewModel.cReqSuccessLiveData.observe(this, Observer { response->this
@@ -105,7 +115,7 @@ class  ClinicProfileActivity : BaseActivity() {
         clinicEmail.visibility = GONE
         approveDocRequest.visibility = GONE
 
-
+        sendRequestToClinic.setOnClickListener({moveToHome()})
     }
 
     private fun moveToHome()
