@@ -45,8 +45,8 @@ class  ClinicProfileActivity : BaseActivity() {
         clinicPhone.text=clickedClinic.phoneNo
         clinicRegistrationNo.text=clickedClinic.registrationNo
 
-        docId=user.id
-        clinicId=clickedClinic.id
+        docId=clickedClinic.id
+        clinicId= user.id
 
 
          viewModel.cReqSuccessLiveData.observe(this, Observer { response->this
@@ -92,13 +92,13 @@ class  ClinicProfileActivity : BaseActivity() {
         })
 
         approveDocRequest.setOnClickListener({ moveToHome2() })
-
+        sendRequestToClinic.setOnClickListener { moveToHome() }
     }
 
     private fun moveToHome2()
     {
        viewModel.clinicApprovesDoc(clinicId,docId)
-        val fragmentA = GalleryFragment()
+        val fragmentA = HomeFragment()
 
         supportFragmentManager.beginTransaction().replace(R.id.cf1,fragmentA).commit()
         sendRequestToClinic.visibility = GONE
