@@ -2,20 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_workingDoctors"
             android:icon="@drawable/ic_art"
-            android:title="InActive Doctors"  />
+            android:title="Working Doctors" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_newRequests"
+            android:icon="@drawable/ic_art"
+            android:title="New Requests"  />
+        <item
+            android:id="@+id/nav_allClinics"
+            android:icon="@drawable/ic_art"
+            android:title="All Clinics" />
+        <item
+            android:id="@+id/nav_workingClinics"
+            android:icon="@drawable/ic_art"
+            android:title="Working Clinics" />
     </group>
 </menu>

@@ -1,4 +1,4 @@
-package com.wHealth.activities.ui.home
+package com.wHealth.activities.ui.allClinics
 import ApiInterface
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class GalleryViewModel(private val apiInterface: ApiInterface,private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
+class AllClinicViewModel(private val apiInterface: ApiInterface, private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
 {
     var cId:Int=0
 
@@ -21,19 +21,16 @@ class GalleryViewModel(private val apiInterface: ApiInterface,private val shared
 
 
     fun getUsers() {
-        cId= sharedPreference.getCurrentUser().id
         launch {
 
-                val response = apiInterface.getInActiveDoctorsApi(cId)
+                val response = apiInterface.getActiveClinicsApi()
                 if (response.isSuccessful) {
-
                     response.body()?.let { response ->
                         getInactiveDocSuccessLiveData.postValue(response)
                     }
                 } else {
                     getInactiveDocSuccessLiveData.postValue(null)
                 }
-
         }
     }
 

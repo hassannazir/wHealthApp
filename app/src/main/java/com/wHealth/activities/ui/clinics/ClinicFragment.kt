@@ -1,36 +1,30 @@
-package com.wHealth.activities.ui.gallery
+package com.wHealth.activities.ui.clinics
 
-import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wHealth.R
 import com.wHealth.activities.base.BaseFragment
 import com.wHealth.activities.clinicrequest.ClinicProfileActivity
-import com.wHealth.activities.ui.home.CellClickListener
-import com.wHealth.activities.ui.home.GalleryViewModel
-import com.wHealth.activities.ui.home.HomeViewModel
+import com.wHealth.activities.doctorprofile.DoctorProfileActivity
+import com.wHealth.activities.ui.doctor.CellClickListener
 import com.wHealth.adapters.ClinicAdapter
 import com.wHealth.di.fragmentScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_clinic.*
 import org.koin.android.ext.android.inject
 
 //import com.wHealth.activities.R
 
-class GalleryFragment : BaseFragment(), CellClickListener {
+class ClinicFragment : BaseFragment(), CellClickListener {
 
-    private val viewModel: GalleryViewModel by fragmentScope.inject()
+    private val viewModel: ClinicViewModel by fragmentScope.inject()
     lateinit var clinicAdapter: ClinicAdapter
     private  val sharedPreference: WHealthSharedPreference by inject()
     override fun onCreateView(
@@ -41,7 +35,7 @@ class GalleryFragment : BaseFragment(), CellClickListener {
 
 
 
-        return inflater.inflate(R.layout.fragment_gallery, container, false)
+        return inflater.inflate(R.layout.fragment_clinic, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,15 +60,10 @@ class GalleryFragment : BaseFragment(), CellClickListener {
         })
 
         viewModel.getUsers()
-
-
-
-
-
     }
     override fun onCellClickListener(data:AppUser) {
 
-        val act = Intent(context, ClinicProfileActivity::class.java)
+        val act = Intent(context, DoctorProfileActivity::class.java)
         act.putExtra("clickedClinic", data)
         startActivity(act)
 

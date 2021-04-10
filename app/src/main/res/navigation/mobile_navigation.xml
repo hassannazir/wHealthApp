@@ -3,23 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_workingDoctors">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.wHealth.activities.ui.home.HomeFragment"
+        android:id="@+id/nav_workingDoctors"
+        android:name="com.wHealth.activities.ui.clinics.ClinicFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_clinic" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.wHealth.activities.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_allClinics"
+        android:name="com.wHealth.activities.ui.doctor.DoctorFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.wHealth.activities.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_doctor"
+       />
 </navigation>

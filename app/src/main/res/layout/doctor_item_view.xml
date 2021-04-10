@@ -19,7 +19,7 @@
             android:id="@+id/item_image"
             android:layout_alignParentStart="true"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/clinic" />
+            android:src="@drawable/doctor_avatar" />
 
         <TextView
             android:layout_width="wrap_content"

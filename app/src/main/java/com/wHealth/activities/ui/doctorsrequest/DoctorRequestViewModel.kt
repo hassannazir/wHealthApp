@@ -1,4 +1,4 @@
-package com.wHealth.activities.ui.home
+package com.wHealth.activities.ui.doctorsrequest
 import ApiInterface
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class HomeViewModel(private val apiInterface: ApiInterface,private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
+class DoctorRequestViewModel(private val apiInterface: ApiInterface, private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
 {
     var cId:Int=0
     override val coroutineContext: CoroutineContext
@@ -19,26 +19,11 @@ class HomeViewModel(private val apiInterface: ApiInterface,private val sharedPre
     var getClinicsSuccessLiveData: MutableLiveData<GetAllClinicsResponse> = MutableLiveData()
 
 
-    fun getUsers() {
+    fun getPendingDoctorsRequest() {
         cId= sharedPreference.getCurrentUser().id
         launch {
-
-            if(sharedPreference.getCurrentUser().type!=CLINIC) {
-                val response = apiInterface.getActiveClinicsApi()
+                val response = apiInterface.getpendingDoctorsRequestApi(cId)
                 if (response.isSuccessful) {
-
-                    response.body()?.let { response ->
-                        getClinicsSuccessLiveData.postValue(response)
-                    }
-                } else {
-                    getClinicsSuccessLiveData.postValue(null)
-                }
-            }
-            else
-            {
-                val response = apiInterface.getActiveDoctorsApi(cId)
-                if (response.isSuccessful) {
-
                     response.body()?.let { response ->
                         getClinicsSuccessLiveData.postValue(response)
                     }
@@ -48,5 +33,3 @@ class HomeViewModel(private val apiInterface: ApiInterface,private val sharedPre
             }
         }
     }
-
-}

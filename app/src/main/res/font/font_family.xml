@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        app:font="@font/regular"
+        app:fontStyle="normal"
+        app:fontWeight="500" />
+
+    <font
+        app:font="@font/regular_it"
+        app:fontStyle="italic"
+        app:fontWeight="500" />
+
+    <font
+        app:font="@font/light"
+        app:fontStyle="normal"
+        app:fontWeight="300" />
+
+    <font
+        app:font="@font/light_it"
+        app:fontStyle="italic"
+        app:fontWeight="300" />
+
+    <font
+        app:font="@font/semibold"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+
+    <font
+        app:font="@font/semibold_it"
+        app:fontStyle="italic"
+        app:fontWeight="700" />
+
+    <font
+        app:font="@font/bold"
+        app:fontStyle="normal"
+        app:fontWeight="900" />
+    <font
+    app:font="@font/roboto_black"
+     />
+    <font
+        app:font="@font/roboto_black" />
+    <font
+        app:font="@font/roboto_blackitalic" />
+    <font
+        app:font="@font/roboto_bold"
+        />
+    <font
+        app:font="@font/roboto_bolditalic" />
+    <font
+    app:font="@font/roboto_italic" />
+    <font
+    app:font="@font/roboto_light" />
+
+    <font
+        app:font="@font/roboto_lightitalic" />
+    <font
+        app:font="@font/roboto_medium" />
+    <font
+        app:font="@font/roboto_mediumitalic" />
+    <font
+        app:font="@font/roboto_regular" />
+    <font
+        app:font="@font/roboto_thin" />
+    <font
+        app:font="@font/roboto_thinitalic" />
+
+
+</font-family>

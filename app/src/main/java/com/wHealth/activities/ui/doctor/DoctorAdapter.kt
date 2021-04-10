@@ -1,4 +1,4 @@
-package com.wHealth.adapters
+package com.wHealth.activities.ui.doctor
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,18 +8,19 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.wHealth.R
+import com.wHealth.activities.forgotpassword.ForgotPasswordActivity
 import com.wHealth.activities.ui.doctor.CellClickListener
 import com.wHealth.model.AppUser
 
 
-class ClinicAdapter( private val cellClickListener: CellClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
+class DoctorAdapter( private val cellClickListener: CellClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
 
     private val clinicList = mutableListOf<AppUser>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClinicViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.doctor_item_view, parent, false)
+                .inflate(R.layout.clinic_item_view, parent, false)
 
         return ClinicViewHolder(view)
     }
@@ -36,20 +37,10 @@ class ClinicAdapter( private val cellClickListener: CellClickListener) : Recycle
 
         }
 
-    public interface onClickListener
-    {
-        fun onClick(au:AppUser)
-    }
-
     fun setClinics(cList: List<AppUser>)
     {
         clinicList.addAll(cList)
         notifyDataSetChanged()
-    }
-
-    fun getClinics():List<AppUser>
-    {
-        return clinicList
     }
 }
 // Describes an item view and its place within the RecyclerView

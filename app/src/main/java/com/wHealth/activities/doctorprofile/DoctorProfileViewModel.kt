@@ -1,0 +1,60 @@
+package com.wHealth.activities.doctorprofile
+import ApiInterface
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.wHealth.network.response.ClinicReqResponse
+import com.wHealth.network.response.LoginResponse
+import com.wHealth.sharedpreferences.WHealthSharedPreference
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
+
+class DoctorProfileViewModel(private val apiInterface: ApiInterface) : ViewModel(), CoroutineScope
+{
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Default + SupervisorJob() + CoroutineExceptionHandler { _, throwable ->
+            //logger.e("TasksViewModel", "Error on coroutine", throwable)
+        }
+
+    var cReqSuccessLiveData: MutableLiveData<ClinicReqResponse> = MutableLiveData()
+
+    fun reqToJoinClinic(docId: Int, clinicId: Int?) {
+
+        launch {
+            val response = apiInterface.reqToJoinClinicApi(docId,clinicId)
+            if (response.isSuccessful) {
+
+                response.body()?.let { response ->
+                    cReqSuccessLiveData.postValue(response)
+
+                }
+
+            }
+            else
+            {
+                cReqSuccessLiveData.postValue(null)
+            }
+        }
+    }
+
+    var cApproveDocSuccess: MutableLiveData<ClinicReqResponse> = MutableLiveData()
+
+    fun clinicApprovesDoc(clinicId: Int, docId: Int ) {
+
+        launch {
+            val response = apiInterface.clinicApprovesDocApi(clinicId,docId)
+            if (response.isSuccessful) {
+
+                response.body()?.let { response ->
+                    cApproveDocSuccess.postValue(response)
+
+                }
+
+            }
+            else
+            {
+                cApproveDocSuccess.postValue(null)
+            }
+        }
+    }
+
+}

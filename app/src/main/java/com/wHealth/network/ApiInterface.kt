@@ -54,16 +54,27 @@ interface ApiInterface {
     suspend fun getActiveClinicsApi(
     ): Response<GetAllClinicsResponse>
 
-
     @POST("api/Data")
     @Headers("Content-Type: application/json")
     suspend fun  getActiveDoctorsApi(
             @Query("Cid") Cid:Int
     ): Response<GetAllClinicsResponse>
 
+    @POST("api/Requests")
+    @Headers("Content-Type: application/json")
+    suspend fun  getWorkingClinicsApi(
+            @Query("doc_id") did:Int
+    ): Response<GetAllClinicsResponse>
+
     @DELETE("api/Data")
     @Headers("Content-Type: application/json")
     suspend fun  getInActiveDoctorsApi(
+            @Query("Cid") Cid:Int
+    ): Response<GetAllClinicsResponse>
+
+    @DELETE("api/Data")
+    @Headers("Content-Type: application/json")
+    suspend fun  getpendingDoctorsRequestApi(
             @Query("Cid") Cid:Int
     ): Response<GetAllClinicsResponse>
 
@@ -80,29 +91,6 @@ interface ApiInterface {
             @Query("cid") cid: Int,
             @Query("did") did: Int
     ): Response<ClinicReqResponse>
-
-
-
-
-    //Once in a lifetime
-//    companion object {
-//        private var retrofit: Retrofit? = null
-//        private const val BASE_URL = "https://whealthapp.azurewebsites.net/"
-//
-//        //Creating Retrofit Object
-//        fun getRetrofitInstance(): ApiInterface? {
-//            if (retrofit == null) {
-//                //Create New Object for Retrofit
-//
-//                retrofit = Retrofit.Builder()
-//                    .baseUrl(BASE_URL)
-//                    .addConverterFactory(GsonConverterFactory.create())
-//                    .build()
-//            }
-//            return retrofit?.create(ApiInterface::class.java)
-//        }
-//    }
-
 
 }
 

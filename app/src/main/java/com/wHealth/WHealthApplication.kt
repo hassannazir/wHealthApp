@@ -2,11 +2,14 @@ package com.wHealth
 
 import android.app.Application
 import com.wHealth.activities.clinicrequest.clinicRequestModule
+import com.wHealth.activities.doctorprofile.doctorProfileModule
 import com.wHealth.activities.forgotpassword.forgotPasswordModule
 import com.wHealth.activities.register.registerModule
 import com.wHealth.activities.login.loginModule
-import com.wHealth.activities.ui.gallery.galleryModule
-import com.wHealth.activities.ui.home.homeModule
+import com.wHealth.activities.ui.allClinics.AllClinicsModule
+import com.wHealth.activities.ui.clinics.clinicsModule
+import com.wHealth.activities.ui.doctor.doctorModule
+import com.wHealth.activities.ui.doctorsrequest.doctorRequestModule
 import com.wHealth.activities.updateprofile.updateProfileModule
 import com.wHealth.di.appModule
 import org.koin.android.ext.koin.androidContext
@@ -22,9 +25,12 @@ class WHealthApplication : Application() {
             loginModule,
                 forgotPasswordModule,
             updateProfileModule,
-            homeModule,
+            clinicsModule,
                 clinicRequestModule,
-                galleryModule
+                doctorModule,
+                doctorRequestModule,
+                doctorProfileModule,
+                AllClinicsModule
 
         )
 

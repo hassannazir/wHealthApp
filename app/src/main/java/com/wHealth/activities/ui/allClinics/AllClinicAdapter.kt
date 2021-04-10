@@ -1,4 +1,4 @@
-package com.wHealth.adapters
+package com.wHealth.activities.ui.allClinics
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -12,14 +12,14 @@ import com.wHealth.activities.ui.doctor.CellClickListener
 import com.wHealth.model.AppUser
 
 
-class ClinicAdapter( private val cellClickListener: CellClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
+class AllClinicAdapter( private val cellClickListener: CellClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
 
     private val clinicList = mutableListOf<AppUser>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClinicViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.doctor_item_view, parent, false)
+                .inflate(R.layout.clinic_item_view, parent, false)
 
         return ClinicViewHolder(view)
     }

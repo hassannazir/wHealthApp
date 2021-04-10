@@ -1,4 +1,4 @@
-package com.wHealth.activities.ui.home
+package com.wHealth.activities.ui.doctor
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,12 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wHealth.R
 import com.wHealth.activities.clinicrequest.ClinicProfileActivity
 import com.wHealth.activities.base.BaseFragment
-import com.wHealth.activities.register.RegisterViewModel.Companion.CLINIC
-import com.wHealth.adapters.ClinicAdapter
 import com.wHealth.di.fragmentScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_doctor.*
 import org.koin.android.ext.android.inject
 
 //import com.wHealth.activities.R
@@ -25,12 +23,12 @@ interface CellClickListener {
     fun onCellClickListener(data: AppUser)
 }
 
-class HomeFragment : BaseFragment(),CellClickListener{
+class DoctorFragment : BaseFragment(),CellClickListener{
 
 
 
-    private val viewModel: HomeViewModel by fragmentScope.inject()
-    lateinit var clinicAdapter: ClinicAdapter
+    private val viewModel: DoctorViewModel by fragmentScope.inject()
+    lateinit var doctorAdapter: DoctorAdapter
     private  val sharedPreference: WHealthSharedPreference by inject()
     override fun onCreateView(
 
@@ -39,38 +37,29 @@ class HomeFragment : BaseFragment(),CellClickListener{
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_doctor, container, false)
     }
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        clinicAdapter = ClinicAdapter(this)
-        clinicRecyclerView.apply{
+        doctorAdapter = DoctorAdapter(this)
+        workingClinicRecyclerView.apply{
             layoutManager= LinearLayoutManager(activity)
-            adapter = clinicAdapter
-
+            adapter = doctorAdapter
         }
 
             viewModel.getClinicsSuccessLiveData.observe(viewLifecycleOwner, Observer { response ->
                 if (response.status) {
                     Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
-                    clinicAdapter.setClinics(response.result)
+                    doctorAdapter.setClinics(response.result)
 
                 } else {
                     Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
                 }
             })
             viewModel.getUsers()
-
-
-
     }
 
     override fun onCellClickListener(data:AppUser) {
-
         val act = Intent(context, ClinicProfileActivity::class.java)
         act.putExtra("clickedClinic", data)
         startActivity(act)

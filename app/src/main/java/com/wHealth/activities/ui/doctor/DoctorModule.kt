@@ -1,4 +1,4 @@
-package com.wHealth.activities.ui.home
+package com.wHealth.activities.ui.doctor
 
 import androidx.annotation.RestrictTo
 import com.wHealth.adapters.ClinicAdapter
@@ -6,10 +6,10 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
-val homeModule = module {
-    scope<HomeFragment> {
+val doctorModule = module {
+    scope<DoctorFragment> {
         viewModel {
-            HomeViewModel(apiInterface = get(), sharedPreference=get())
+            DoctorViewModel(apiInterface = get(), sharedPreference=get())
         }
     }
 }
