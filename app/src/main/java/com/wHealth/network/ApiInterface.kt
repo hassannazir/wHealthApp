@@ -9,14 +9,14 @@ interface ApiInterface {
 
     //https://whealthapp.azurewebsites.net/
     //Creating a User
-    @POST("api/Users")
+    @POST("api/Users/Create")
     @Headers("Content-Type: application/json")
     suspend fun registerUserApi(
         @Body appUser: AppUser
     ): Response<RegisterResponse>
 
     //Logged in a User
-    @POST("api/Accounts")
+    @POST("api/Accounts/Login")
     @Headers("Content-Type: application/json")
     suspend fun loginUserApi(
         @Query("username") username: String,
@@ -26,7 +26,7 @@ interface ApiInterface {
 
 
     //Logged in a User
-    @GET("api/PasswordHandler")
+    @GET("api/PasswordHandler/SendCodeToEmail")
     @Headers("Content-Type: application/json")
     suspend fun verifyUserApi(
             @Query("usrname") usrname: String
@@ -35,57 +35,57 @@ interface ApiInterface {
 
 
     //Logged in a User
-    @PUT("api/PasswordHandler")
+    @PUT("api/PasswordHandler/SaveUpdatedPassword")
     @Headers("Content-Type: application/json")
     suspend fun UpdatePassApi(
             @Query("usrname") usrname: String,
             @Query("newpass") newpass: String
     ): Response<UpdatePasswordResponse>
 
-    @PUT("api/Users")
+    @PUT("api/Users/Edit")
     @Headers("Content-Type: application/json")
     suspend fun updateUserApi(
         @Query("id") id: Int,
         @Body appUser: AppUser
     ): Response<UpdateProfileResponse>
 
-    @GET("api/Data")
+    @GET("api/Data/Get")
     @Headers("Content-Type: application/json")
     suspend fun getActiveClinicsApi(
     ): Response<GetAllClinicsResponse>
 
-    @POST("api/Data")
+    @POST("api/Data/ActiveDoctors")
     @Headers("Content-Type: application/json")
     suspend fun  getActiveDoctorsApi(
             @Query("Cid") Cid:Int
     ): Response<GetAllClinicsResponse>
 
-    @POST("api/Requests")
+    @POST("api/Requests/clincsOfLoggoedInDoctors")
     @Headers("Content-Type: application/json")
     suspend fun  getWorkingClinicsApi(
             @Query("doc_id") did:Int
     ): Response<GetAllClinicsResponse>
 
-    @DELETE("api/Data")
+    @DELETE("api/Data/InActiveDoctors")
     @Headers("Content-Type: application/json")
     suspend fun  getInActiveDoctorsApi(
             @Query("Cid") Cid:Int
     ): Response<GetAllClinicsResponse>
 
-    @DELETE("api/Data")
+    @DELETE("api/Data/InActiveDoctors")
     @Headers("Content-Type: application/json")
     suspend fun  getpendingDoctorsRequestApi(
             @Query("Cid") Cid:Int
     ): Response<GetAllClinicsResponse>
 
-    @GET("api/Requests")
+    @GET("api/Requests/DoctorSendRequestToClinic")
     @Headers("Content-Type: application/json")
     suspend fun reqToJoinClinicApi(
             @Query("docId") docId: Int,
             @Query("clinicId") clinicId: Int?
     ): Response<ClinicReqResponse>
 
-    @PUT("api/Requests")
+    @PUT("api/Requests/DoctorClinicApproval")
     @Headers("Content-Type: application/json")
     suspend fun clinicApprovesDocApi(
             @Query("cid") cid: Int,

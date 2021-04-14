@@ -45,4 +45,5 @@
     <string name="active_doctors">Active Doctors</string>
     <string name="new_doctor_requests">New Doctor Requests</string>
     <string name="working_doctors">Working Clinic</string>
+    <string name="recurring_schedule">Recurring Schedule</string>
 </resources>

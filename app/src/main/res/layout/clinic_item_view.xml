@@ -54,6 +54,15 @@
             android:layout_marginTop="4dp"
             android:textColor="@color/black"
             tool:text="Rangpura, Sialkot"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_image"
+            android:text="Schedule Timings"
+            android:id="@+id/scheduleClinicTiming"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

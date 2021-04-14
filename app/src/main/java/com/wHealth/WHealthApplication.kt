@@ -2,6 +2,7 @@ package com.wHealth
 
 import android.app.Application
 import com.wHealth.activities.clinicrequest.clinicRequestModule
+import com.wHealth.activities.clinicschedule.ClinicScheduleModule
 import com.wHealth.activities.doctorprofile.doctorProfileModule
 import com.wHealth.activities.forgotpassword.forgotPasswordModule
 import com.wHealth.activities.register.registerModule
@@ -30,7 +31,8 @@ class WHealthApplication : Application() {
                 doctorModule,
                 doctorRequestModule,
                 doctorProfileModule,
-                AllClinicsModule
+                AllClinicsModule,
+                ClinicScheduleModule
 
         )
 

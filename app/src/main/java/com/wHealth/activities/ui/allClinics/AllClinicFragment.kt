@@ -33,10 +33,7 @@ class AllClinicFragment : BaseFragment(), CellClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
-        return inflater.inflate(R.layout.fragment_allclinic, container, false)
+       return inflater.inflate(R.layout.fragment_allclinic, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,5 +63,9 @@ class AllClinicFragment : BaseFragment(), CellClickListener {
         act.putExtra("clickedClinic", data)
         startActivity(act)
 
+    }
+
+    override fun onScheduleTimingClick(data: AppUser) {
+        TODO("Not yet implemented")
     }
 }

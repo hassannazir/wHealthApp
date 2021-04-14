@@ -37,14 +37,13 @@ class DoctorViewModel(private val apiInterface: ApiInterface, private val shared
             else
             {
                 val response = apiInterface.getActiveDoctorsApi(cId)
-                if (response.isSuccessful) {
 
                     response.body()?.let { response ->
                         getClinicsSuccessLiveData.postValue(response)
                     }
-                } else {
-                    getClinicsSuccessLiveData.postValue(null)
-                }
+//                } else {
+//                    getClinicsSuccessLiveData.postValue(null)
+//                }
             }
         }
     }

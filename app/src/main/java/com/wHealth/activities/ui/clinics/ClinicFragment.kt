@@ -68,4 +68,8 @@ class ClinicFragment : BaseFragment(), CellClickListener {
         startActivity(act)
 
     }
+
+    override fun onScheduleTimingClick(data: AppUser) {
+        TODO("Not yet implemented")
+    }
 }
