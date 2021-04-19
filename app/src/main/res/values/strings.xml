@@ -46,4 +46,6 @@
     <string name="new_doctor_requests">New Doctor Requests</string>
     <string name="working_doctors">Working Clinic</string>
     <string name="recurring_schedule">Recurring Schedule</string>
+    <string name="end_date">End Date</string>
+    <string name="slot_length_in_minutes">Slot Length In Minutes</string>
 </resources>

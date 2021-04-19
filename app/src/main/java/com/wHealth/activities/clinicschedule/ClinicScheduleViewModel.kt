@@ -8,51 +8,27 @@ import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class ClinicScheduleViewModel(private val apiInterface: ApiInterface) : ViewModel(), CoroutineScope
+class ClinicScheduleViewModel(private val apiInterface: ApiInterface,private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
 {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default + SupervisorJob() + CoroutineExceptionHandler { _, throwable ->
             //logger.e("TasksViewModel", "Error on coroutine", throwable)
         }
 
-    var cReqSuccessLiveData: MutableLiveData<ClinicReqResponse> = MutableLiveData()
+    var clinicScheduleSuccessLiveData: MutableLiveData<ClinicReqResponse> = MutableLiveData()
 
-    fun reqToJoinClinic(docId: Int, clinicId: Int?) {
-
+    fun scheduleClinic(clinicId: Int,startDate:String,endDate:String,startTime:String,endTime:String,day:String,recurring:Boolean) {
+        var docId= sharedPreference.getCurrentUser().id
         launch {
-            val response = apiInterface.reqToJoinClinicApi(docId,clinicId)
+            val response = apiInterface.clinicScheduleApi(docId,clinicId,startTime,endTime,startDate,endDate,recurring,day)
             if (response.isSuccessful) {
-
                 response.body()?.let { response ->
-                    cReqSuccessLiveData.postValue(response)
-
+                    clinicScheduleSuccessLiveData.postValue(response)
                 }
-
             }
             else
             {
-                cReqSuccessLiveData.postValue(null)
-            }
-        }
-    }
-
-    var cApproveDocSuccess: MutableLiveData<ClinicReqResponse> = MutableLiveData()
-
-    fun clinicApprovesDoc(clinicId: Int, docId: Int ) {
-
-        launch {
-            val response = apiInterface.clinicApprovesDocApi(clinicId,docId)
-            if (response.isSuccessful) {
-
-                response.body()?.let { response ->
-                    cApproveDocSuccess.postValue(response)
-
-                }
-
-            }
-            else
-            {
-                cApproveDocSuccess.postValue(null)
+                clinicScheduleSuccessLiveData.postValue(null)
             }
         }
     }

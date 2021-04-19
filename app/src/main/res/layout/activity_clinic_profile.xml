@@ -181,6 +181,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="80dp"
+        android:visibility="gone"
         android:enabled="true"
         android:text="Request To Work In Clinic"
         app:layout_constraintBottom_toBottomOf="parent"

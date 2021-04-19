@@ -7,9 +7,11 @@ import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
+import android.widget.Toast
 import com.wHealth.R
 import com.wHealth.activities.BaseActivity
 import com.wHealth.di.activityScope
+import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_clinic_schedule.*
 import org.koin.android.ext.android.inject
@@ -23,10 +25,16 @@ class  ClinicScheduleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clinic_schedule)
-        radio_recurring.setOnClickListener {
-            if(radio_recurring.isChecked)
+        val clickedClinic = intent.getSerializableExtra("clickedClinic") as AppUser
+        checkbox_recurring.setOnClickListener {
+            if(checkbox_recurring.isChecked)
             {
-
+                edt_day.visibility=View.VISIBLE
+                edt_end_date.visibility=View.GONE
+            }
+            else{
+                edt_day.visibility=View.GONE
+                edt_end_date.visibility=View.VISIBLE
             }
         }
         edt_start_date.apply {
@@ -39,7 +47,7 @@ class  ClinicScheduleActivity : BaseActivity() {
                 val picker = DatePickerDialog(
                         this@ClinicScheduleActivity, { view, year, monthOfYear, dayOfMonth ->
                     edt_start_date.setText(
-                            dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
+                                    year.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth.toString()
                     )
                 }, year, month, day
                 )
@@ -57,7 +65,7 @@ class  ClinicScheduleActivity : BaseActivity() {
                 val picker = DatePickerDialog(
                         this@ClinicScheduleActivity, { view, year, monthOfYear, dayOfMonth ->
                     edt_end_date.setText(
-                            dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
+                            year.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth.toString()
                     )
                 }, year, month, day
                 )
@@ -72,6 +80,7 @@ class  ClinicScheduleActivity : BaseActivity() {
                 val mcurrentTime = Calendar.getInstance()
                 val hour = mcurrentTime[Calendar.HOUR_OF_DAY]
                 val minute = mcurrentTime[Calendar.MINUTE]
+                val second = mcurrentTime[Calendar.SECOND]
                 val mTimePicker: TimePickerDialog
                 mTimePicker = TimePickerDialog(this@ClinicScheduleActivity, OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
                     edt_start_time.setText("$selectedHour:$selectedMinute") }, hour, minute,false) //Yes 24 hour time
@@ -87,9 +96,26 @@ class  ClinicScheduleActivity : BaseActivity() {
                 val minute = mcurrentTime[Calendar.MINUTE]
                 val mTimePicker: TimePickerDialog
                 mTimePicker = TimePickerDialog(this@ClinicScheduleActivity, OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
-                    edt_start_time.setText("$selectedHour:$selectedMinute") }, hour, minute,false) //Yes 24 hour time
+                    edt_end_time.setText("$selectedHour:$selectedMinute") }, hour, minute,false) //Yes 24 hour time
                 mTimePicker.show()
             }
         }
+        scheduleClinic.setOnClickListener {
+            val startDate=edt_start_date.text.toString()
+            val endDate=edt_end_date.text.toString()
+            val startTime=edt_start_time.text.toString()+":00"
+            val endTime=edt_end_time.text.toString()+":00"
+            val day=edt_day.text.toString()
+            val recurring= checkbox_recurring.isChecked
+            viewModel.scheduleClinic(clickedClinic.id,startDate,endDate = endDate,startTime = startTime,endTime = endTime,day = day,recurring = recurring)
+        }
+        viewModel.clinicScheduleSuccessLiveData.observe(this, androidx.lifecycle.Observer { response ->
+            if (response.status) {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+                //doctorAdapter.setClinics(response.result)
+            } else {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

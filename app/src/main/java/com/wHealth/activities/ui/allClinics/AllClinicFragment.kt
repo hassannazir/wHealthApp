@@ -61,6 +61,7 @@ class AllClinicFragment : BaseFragment(), CellClickListener {
 
         val act = Intent(context, ClinicProfileActivity::class.java)
         act.putExtra("clickedClinic", data)
+        act.putExtra("approved", 0)
         startActivity(act)
 
     }

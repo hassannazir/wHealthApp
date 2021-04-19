@@ -92,5 +92,17 @@ interface ApiInterface {
             @Query("did") did: Int
     ): Response<ClinicReqResponse>
 
+    @POST("api/Requests/setDocSchedule")
+    @Headers("Content-Type: application/json")
+    suspend fun clinicScheduleApi(
+            @Query("doctorId") doctorId: Int,
+            @Query("clinicId") clinicId: Int,
+            @Query("startTime") startTime: String,
+            @Query("endTime") endTime: String,
+            @Query("startDate") startDate: String,
+            @Query("endDate") endDate: String,
+            @Query("recurring") recurring: Boolean,
+            @Query("day") day: String
+    ): Response<ClinicReqResponse>
 }
 

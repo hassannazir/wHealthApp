@@ -1,6 +1,7 @@
 package com.wHealth.activities.clinicrequest
 
 import android.os.Bundle
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -31,6 +32,7 @@ class  ClinicProfileActivity : BaseActivity() {
 
 
         val clickedClinic = intent.getSerializableExtra("clickedClinic") as AppUser
+        val approved= intent.getSerializableExtra("approved") as Int
         //val clickedDoctor = intent.getSerializableExtra("clickedDoctor") as? AppUser
 
         var user=sharedPreference.getCurrentUser()
@@ -43,6 +45,13 @@ class  ClinicProfileActivity : BaseActivity() {
 
         docId=clickedClinic.id
         clinicId= user.id
+        if(approved==0)
+        {
+            sendRequestToClinic.visibility=View.VISIBLE
+        }
+        else{
+            sendRequestToClinic.visibility=View.GONE
+        }
 
 
          viewModel.cReqSuccessLiveData.observe(this, Observer { response->this
