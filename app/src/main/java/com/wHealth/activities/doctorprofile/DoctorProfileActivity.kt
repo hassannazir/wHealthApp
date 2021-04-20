@@ -2,6 +2,7 @@ package com.wHealth.activities.doctorprofile
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -30,9 +31,8 @@ class  DoctorProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_profile)
-
-
         val clickedClinic = intent.getSerializableExtra("clickedClinic") as AppUser
+        val approved = intent.getSerializableExtra("approved") as Int
         //val clickedDoctor = intent.getSerializableExtra("clickedDoctor") as? AppUser
 
         var user=sharedPreference.getCurrentUser()
@@ -42,7 +42,12 @@ class  DoctorProfileActivity : BaseActivity() {
         clinicAddress.text=clickedClinic.address
         clinicPhone.text=clickedClinic.phoneNo
         clinicRegistrationNo.text=clickedClinic.registrationNo
-
+if(approved==1){
+    approveDocRequest.visibility=View.GONE
+}
+        else{
+    approveDocRequest.visibility=View.VISIBLE
+        }
         docId=clickedClinic.id
         clinicId= user.id
 
@@ -71,7 +76,6 @@ class  DoctorProfileActivity : BaseActivity() {
             //sendRequestToClinic.visibility = GONE
             RegText.visibility = GONE
             clinicRegistrationNo.visibility = GONE
-            approveDocRequest.visibility = VISIBLE
 
         }
 

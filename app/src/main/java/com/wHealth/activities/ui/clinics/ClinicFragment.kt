@@ -64,6 +64,7 @@ class ClinicFragment : BaseFragment(), CellClickListener {
     override fun onCellClickListener(data:AppUser) {
         val act = Intent(context, DoctorProfileActivity::class.java)
         act.putExtra("clickedClinic", data)
+        act.putExtra("approved", 1)
         startActivity(act)
     }
 
