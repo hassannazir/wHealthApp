@@ -17,10 +17,10 @@ class ClinicScheduleViewModel(private val apiInterface: ApiInterface,private val
 
     var clinicScheduleSuccessLiveData: MutableLiveData<ClinicReqResponse> = MutableLiveData()
 
-    fun scheduleClinic(clinicId: Int,startDate:String,endDate:String,startTime:String,endTime:String,day:String,recurring:Boolean) {
+    fun scheduleClinic(clinicId: Int,startDate:String,endDate:String,startTime:String,endTime:String,day:String,recurring:Boolean,slotLength:Int) {
         var docId= sharedPreference.getCurrentUser().id
         launch {
-            val response = apiInterface.clinicScheduleApi(docId,clinicId,startTime,endTime,startDate,endDate,recurring,day)
+            val response = apiInterface.clinicScheduleApi(docId,clinicId,startTime,endTime,startDate,endDate,recurring,day,slotLength)
             if (response.isSuccessful) {
                 response.body()?.let { response ->
                     clinicScheduleSuccessLiveData.postValue(response)

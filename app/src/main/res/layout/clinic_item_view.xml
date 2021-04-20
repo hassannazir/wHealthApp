@@ -54,15 +54,33 @@
             android:layout_marginTop="4dp"
             android:textColor="@color/black"
             tool:text="Rangpura, Sialkot"/>
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/item_image"
-            android:text="Schedule Timings"
-            android:id="@+id/scheduleClinicTiming"
-            android:fontFamily="@font/roboto_light"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"/>
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="38sp"
+                android:text="Set Schedule"
+                android:id="@+id/scheduleClinicTiming"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_margin="5dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="38sp"
+                android:text="View Schedule"
+                android:layout_weight="1"
+                android:id="@+id/viewScheduleClinicTiming"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

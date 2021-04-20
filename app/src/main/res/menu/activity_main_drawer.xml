@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_allClinics"
             android:icon="@drawable/ic_art"
-            android:title="All Clinics" />
+            android:title="Available Clinics" />
         <item
             android:id="@+id/nav_workingClinics"
             android:icon="@drawable/ic_art"

@@ -1,9 +1,9 @@
 package com.wHealth.activities.clinicschedule
 
 import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
-import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
@@ -26,6 +26,7 @@ class  ClinicScheduleActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clinic_schedule)
         val clickedClinic = intent.getSerializableExtra("clickedClinic") as AppUser
+        pickdate()
         checkbox_recurring.setOnClickListener {
             if(checkbox_recurring.isChecked)
             {
@@ -107,7 +108,8 @@ class  ClinicScheduleActivity : BaseActivity() {
             val endTime=edt_end_time.text.toString()+":00"
             val day=edt_day.text.toString()
             val recurring= checkbox_recurring.isChecked
-            viewModel.scheduleClinic(clickedClinic.id,startDate,endDate = endDate,startTime = startTime,endTime = endTime,day = day,recurring = recurring)
+            val length=Integer.parseInt( edt_slot_length.text.toString());
+            viewModel.scheduleClinic(clickedClinic.id,startDate,endDate = endDate,startTime = startTime,endTime = endTime,day = day,recurring = recurring,slotLength =length )
         }
         viewModel.clinicScheduleSuccessLiveData.observe(this, androidx.lifecycle.Observer { response ->
             if (response.status) {
@@ -118,4 +120,14 @@ class  ClinicScheduleActivity : BaseActivity() {
             }
         })
     }
+    fun pickdate() {
+        // Get Current Date
+        val c = Calendar.getInstance()
+        val mYear = c[Calendar.YEAR]
+        val mMonth = c[Calendar.MONTH]
+        val mDay = c[Calendar.DAY_OF_MONTH]
+        edt_end_date.setText(mYear.toString() + "-" + (mMonth + 1) + "-" + mDay.toString())
+        edt_start_date.setText(mYear.toString() + "-" + (mMonth + 1) + "-" + mDay.toString())
+    }
+
 }

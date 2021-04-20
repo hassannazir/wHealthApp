@@ -51,7 +51,8 @@ interface ApiInterface {
 
     @GET("api/Data/Get")
     @Headers("Content-Type: application/json")
-    suspend fun getActiveClinicsApi(
+    suspend fun getAvailableClinicsApi(
+            @Query("doctorId") doctorId:Int
     ): Response<GetAllClinicsResponse>
 
     @POST("api/Data/ActiveDoctors")
@@ -102,7 +103,8 @@ interface ApiInterface {
             @Query("startDate") startDate: String,
             @Query("endDate") endDate: String,
             @Query("recurring") recurring: Boolean,
-            @Query("day") day: String
+            @Query("day") day: String,
+            @Query("length") length: Int
     ): Response<ClinicReqResponse>
 }
 

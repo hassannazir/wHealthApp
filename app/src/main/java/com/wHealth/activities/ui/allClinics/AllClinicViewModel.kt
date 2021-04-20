@@ -22,8 +22,8 @@ class AllClinicViewModel(private val apiInterface: ApiInterface, private val sha
 
     fun getUsers() {
         launch {
-
-                val response = apiInterface.getActiveClinicsApi()
+            var docId= sharedPreference.getCurrentUser().id
+                val response = apiInterface.getAvailableClinicsApi(docId)
                 if (response.isSuccessful) {
                     response.body()?.let { response ->
                         getInactiveDocSuccessLiveData.postValue(response)

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wHealth.R
 import com.wHealth.activities.ui.doctor.CellClickListener
 import com.wHealth.model.AppUser
+import kotlinx.android.synthetic.main.clinic_item_view.view.*
 
 
 class AllClinicAdapter( private val cellClickListener: CellClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
@@ -33,8 +34,10 @@ class AllClinicAdapter( private val cellClickListener: CellClickListener) : Recy
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(clinicList[position])
         }
+        holder.itemView.scheduleClinicTiming.visibility=View.GONE
+        holder.itemView.viewScheduleClinicTiming.visibility=View.GONE
 
-        }
+    }
 
     public interface onClickListener
     {
