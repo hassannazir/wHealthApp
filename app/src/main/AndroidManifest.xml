@@ -31,6 +31,7 @@
         <activity android:name=".activities.clinicrequest.ClinicProfileActivity" />
         <activity android:name=".activities.doctorprofile.DoctorProfileActivity" />
         <activity android:name=".activities.clinicschedule.ClinicScheduleActivity" />
+        <activity android:name=".activities.ui.clinicschedulelist.ClinicScheduleListActivity" />
     </application>
 
 </manifest>

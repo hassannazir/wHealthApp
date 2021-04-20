@@ -9,6 +9,7 @@ import com.wHealth.activities.register.registerModule
 import com.wHealth.activities.login.loginModule
 import com.wHealth.activities.ui.allClinics.AllClinicsModule
 import com.wHealth.activities.ui.clinics.clinicsModule
+import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListModule
 import com.wHealth.activities.ui.doctor.doctorModule
 import com.wHealth.activities.ui.doctorsrequest.doctorRequestModule
 import com.wHealth.activities.updateprofile.updateProfileModule
@@ -32,7 +33,8 @@ class WHealthApplication : Application() {
                 doctorRequestModule,
                 doctorProfileModule,
                 AllClinicsModule,
-                ClinicScheduleModule
+                ClinicScheduleModule,
+                ClinicScheduleListModule
 
         )
 

@@ -62,14 +62,16 @@ class ClinicFragment : BaseFragment(), CellClickListener {
         viewModel.getUsers()
     }
     override fun onCellClickListener(data:AppUser) {
-
         val act = Intent(context, DoctorProfileActivity::class.java)
         act.putExtra("clickedClinic", data)
         startActivity(act)
-
     }
 
     override fun onScheduleTimingClick(data: AppUser) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onViewScheduleTimingClick(data: AppUser) {
         TODO("Not yet implemented")
     }
 }

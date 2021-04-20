@@ -39,6 +39,9 @@ class DoctorAdapter( private val cellClickListener: CellClickListener) : Recycle
         holder.itemView.scheduleClinicTiming.setOnClickListener {
             cellClickListener.onScheduleTimingClick(clinicList[position])
         }
+        holder.itemView.viewScheduleClinicTiming.setOnClickListener {
+            cellClickListener.onViewScheduleTimingClick(clinicList[position])
+        }
         }
 
     fun setClinics(cList: List<AppUser>)

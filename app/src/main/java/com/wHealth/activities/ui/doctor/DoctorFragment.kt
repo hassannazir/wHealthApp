@@ -12,6 +12,7 @@ import com.wHealth.R
 import com.wHealth.activities.clinicrequest.ClinicProfileActivity
 import com.wHealth.activities.base.BaseFragment
 import com.wHealth.activities.clinicschedule.ClinicScheduleActivity
+import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListActivity
 import com.wHealth.di.fragmentScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
@@ -23,6 +24,7 @@ import org.koin.android.ext.android.inject
 interface CellClickListener {
     fun onCellClickListener(data: AppUser)
     fun onScheduleTimingClick(data: AppUser)
+    fun onViewScheduleTimingClick(data: AppUser)
 }
 
 class DoctorFragment : BaseFragment(),CellClickListener{
@@ -72,6 +74,12 @@ class DoctorFragment : BaseFragment(),CellClickListener{
 
     override fun onScheduleTimingClick(data: AppUser) {
         val act = Intent(context, ClinicScheduleActivity::class.java)
+        act.putExtra("clickedClinic", data)
+        startActivity(act)
+    }
+
+    override fun onViewScheduleTimingClick(data: AppUser) {
+        val act = Intent(context, ClinicScheduleListActivity::class.java)
         act.putExtra("clickedClinic", data)
         startActivity(act)
     }

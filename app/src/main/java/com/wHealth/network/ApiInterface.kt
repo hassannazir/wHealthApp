@@ -86,6 +86,13 @@ interface ApiInterface {
             @Query("clinicId") clinicId: Int?
     ): Response<ClinicReqResponse>
 
+    @GET("api/Requests/scheduleOfDoctor")
+    @Headers("Content-Type: application/json")
+    suspend fun getClinicScheduleListApi(
+            @Query("doc_Id") docId: Int,
+            @Query("clinicId") clinicId: Int?
+    ): Response<ClinicScheduleListResponse>
+
     @PUT("api/Requests/DoctorClinicApproval")
     @Headers("Content-Type: application/json")
     suspend fun clinicApprovesDocApi(
