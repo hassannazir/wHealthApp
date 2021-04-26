@@ -58,8 +58,8 @@ class ClinicViewHolder(view: View):RecyclerView.ViewHolder(view){
     private val clinicSlotLengthTextView: TextView = view.findViewById(R.id.scheduleSlotLength)
 
     fun bind(appUser: clinicSchedule) {
-        clinicDateTextView.text = appUser.startDate+" - "+appUser.endDate
-        clinicTimeTextView.text=appUser.startTime +" - "+ appUser.endTime
+        clinicDateTextView.text = appUser.startDate?.take(10)+" - "+appUser.endDate?.take(10)
+        clinicTimeTextView.text=appUser.startTime?.take(5) +" - "+ appUser.endTime?.take(5)
         clinicDayTextView.text=appUser.day
         clinicSlotLengthTextView.text=appUser.slotLength.toString()
     }

@@ -47,5 +47,15 @@
     <string name="working_doctors">Working Clinic</string>
     <string name="recurring_schedule">Recurring Schedule</string>
     <string name="end_date">End Date</string>
-    <string name="slot_length_in_minutes">Slot Length In Minutes</string>
+    <string name="slot_length_in_minutes">Slot Length In Minutes</string>4
+    <string-array name="weekdays">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
 </resources>
