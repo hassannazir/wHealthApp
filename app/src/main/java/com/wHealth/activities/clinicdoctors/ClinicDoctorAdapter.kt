@@ -1,4 +1,4 @@
-package com.wHealth.activities.ui.allClinics
+package com.wHealth.activities.clinicdoctors
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,17 +11,17 @@ import com.wHealth.R
 import com.wHealth.activities.ui.doctor.CellClickListener
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
-import kotlinx.android.synthetic.main.clinic_item_view.view.*
+import kotlinx.android.synthetic.main.doctor_item_view.view.*
 
 
-class AllClinicAdapter(private val sharedPreference: WHealthSharedPreference, private val cellClickListener:ClinicClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
+class ClinicDoctorAdapter( private val cellClickListener: ClinicDoctorClickListener,private val sharedPreference: WHealthSharedPreference,private  val clinic:Int) : RecyclerView.Adapter<ClinicViewHolder>(){
 
     private val clinicList = mutableListOf<AppUser>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClinicViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.clinic_item_view, parent, false)
+                .inflate(R.layout.doctor_item_view, parent, false)
 
         return ClinicViewHolder(view)
     }
@@ -32,21 +32,16 @@ class AllClinicAdapter(private val sharedPreference: WHealthSharedPreference, pr
 
     override fun onBindViewHolder(holder: ClinicViewHolder, position: Int) {
         holder.bind(clinicList[position])
-        holder.itemView.setOnClickListener {
-            cellClickListener.onClinicClickListener(clinicList[position])
-        }
-        val user=sharedPreference.getCurrentUser()
-        if(user.type=="Patient")
-        {
-            holder.itemView.viewAvailableDoctor.visibility=View.VISIBLE
-        }
-        holder.itemView.viewAvailableDoctor.setOnClickListener {
-            cellClickListener.onAvailableDoctorClickListener(clinicList[position])
-        }
-        holder.itemView.scheduleClinicTiming.visibility=View.GONE
-        holder.itemView.viewScheduleClinicTiming.visibility=View.GONE
 
-    }
+        if(sharedPreference.getCurrentUser().type=="Patient")
+        {
+            holder.itemView.viewDoctorSchedule.visibility=View.VISIBLE
+        }
+        holder.itemView.viewDoctorSchedule.setOnClickListener {
+            cellClickListener.onClinicdoctorClickListener(clinicList[position],clinic)
+        }
+
+        }
 
     public interface onClickListener
     {

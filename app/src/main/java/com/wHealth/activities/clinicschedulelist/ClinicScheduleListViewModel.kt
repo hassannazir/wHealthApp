@@ -21,9 +21,8 @@ class ClinicScheduleListViewModel(private val apiInterface: ApiInterface, privat
     var getInactiveDocSuccessLiveData: MutableLiveData<ClinicScheduleListResponse> = MutableLiveData()
 
 
-    fun getClinicSchedule(clinicId:Int?) {
+    fun getClinicSchedule(docId:Int,clinicId:Int?) {
         launch {
-            var docId= sharedPreference.getCurrentUser().id
                 val response = apiInterface.getClinicScheduleListApi(docId,clinicId)
                 if (response.isSuccessful) {
                     response.body()?.let { response ->

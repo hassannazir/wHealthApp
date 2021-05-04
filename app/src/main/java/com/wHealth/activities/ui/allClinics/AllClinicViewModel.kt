@@ -22,8 +22,10 @@ class AllClinicViewModel(private val apiInterface: ApiInterface, private val sha
 
     fun getUsers() {
         launch {
+            val user=sharedPreference.getCurrentUser()
             var docId= sharedPreference.getCurrentUser().id
-                val response = apiInterface.getAvailableClinicsApi(docId)
+            if(user?.type == "Patient"){
+                val  response = apiInterface.getAvailableClinicsApi()
                 if (response.isSuccessful) {
                     response.body()?.let { response ->
                         getInactiveDocSuccessLiveData.postValue(response)
@@ -31,6 +33,18 @@ class AllClinicViewModel(private val apiInterface: ApiInterface, private val sha
                 } else {
                     getInactiveDocSuccessLiveData.postValue(null)
                 }
+            }
+            else{
+                val  response = apiInterface.getDoctorAvailableClinicsApi(docId)
+                if (response.isSuccessful) {
+                    response.body()?.let { response ->
+                        getInactiveDocSuccessLiveData.postValue(response)
+                    }
+                } else {
+                    getInactiveDocSuccessLiveData.postValue(null)
+                }
+            }
+
         }
     }
 

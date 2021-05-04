@@ -7,7 +7,9 @@ import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class LoginViewModel(private val apiInterface: ApiInterface,private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
+class LoginViewModel(
+        private val apiInterface: ApiInterface,
+        private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
 {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default + SupervisorJob() + CoroutineExceptionHandler { _, throwable ->

@@ -130,7 +130,7 @@ class  ClinicScheduleActivity : BaseActivity() {
     }
 
     private fun formValidation(startDate: String, endDate: String): Boolean {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-M-dd", Locale.ENGLISH)
+        val formatter = DateTimeFormatter.ofPattern("yyyy-M-dd")
         val startdate = LocalDate.parse(startDate, formatter)
         val enddate = LocalDate.parse(endDate, formatter)
         if(startdate>enddate)

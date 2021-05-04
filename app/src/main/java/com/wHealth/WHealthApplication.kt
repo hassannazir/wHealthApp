@@ -1,6 +1,8 @@
 package com.wHealth
 
 import android.app.Application
+import com.wHealth.activities.clinicdoctors.ClinicDoctorListActivity
+import com.wHealth.activities.clinicdoctors.ClinicDoctorListModule
 import com.wHealth.activities.clinicrequest.clinicRequestModule
 import com.wHealth.activities.clinicschedule.ClinicScheduleModule
 import com.wHealth.activities.doctorprofile.doctorProfileModule
@@ -34,7 +36,8 @@ class WHealthApplication : Application() {
                 doctorProfileModule,
                 AllClinicsModule,
                 ClinicScheduleModule,
-                ClinicScheduleListModule
+                ClinicScheduleListModule,
+            ClinicDoctorListModule
 
         )
 

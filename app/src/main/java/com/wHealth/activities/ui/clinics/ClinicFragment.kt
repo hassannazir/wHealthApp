@@ -33,8 +33,6 @@ class ClinicFragment : BaseFragment(), CellClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-
-
         return inflater.inflate(R.layout.fragment_clinic, container, false)
     }
 
@@ -59,7 +57,8 @@ class ClinicFragment : BaseFragment(), CellClickListener {
             }
         })
 
-        viewModel.getUsers()
+        var user= sharedPreference.getCurrentUser()
+        viewModel.getUsers(user.id)
     }
     override fun onCellClickListener(data:AppUser) {
         val act = Intent(context, DoctorProfileActivity::class.java)

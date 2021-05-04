@@ -8,15 +8,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.ui.clinics.ClinicFragment">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/active_doctors"
-    style="@style/ActivityHeading"
-    android:textAlignment="center"
-    android:padding="8dp"
-    android:background="@color/teal_700"
-    android:layout_margin="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/active_doctors"
+        style="@style/ActivityHeading"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:background="@color/teal_700"
+        android:layout_margin="8dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/clinicRecyclerView"
         android:layout_width="match_parent"

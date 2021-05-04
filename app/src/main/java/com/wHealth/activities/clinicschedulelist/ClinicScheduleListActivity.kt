@@ -33,6 +33,8 @@ class ClinicScheduleListActivity : BaseActivity(){
 
 
         val clickedClinic = intent.getSerializableExtra("clickedClinic") as AppUser
+        //val Clinic = intent.getSerializableExtra("Clinic") as Int
+
         clinicAdapter = ClinicScheduleListAdapter()
         allClinicRecyclerView.layoutManager = LinearLayoutManager(this)
         allClinicRecyclerView.adapter = clinicAdapter
@@ -44,6 +46,14 @@ class ClinicScheduleListActivity : BaseActivity(){
                 Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
             }
         })
-        viewModel.getClinicSchedule(clickedClinic.id)
+
+        var docId= sharedPreference.getCurrentUser().id
+        if(sharedPreference.getCurrentUser().type=="Patient")
+        {
+            //viewModel.getClinicSchedule(Clinic,clickedClinic.id)
+        }
+        else{
+            viewModel.getClinicSchedule(docId,clickedClinic.id)
+        }
     }
 }

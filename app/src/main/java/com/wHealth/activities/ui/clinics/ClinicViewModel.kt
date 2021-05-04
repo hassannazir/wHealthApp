@@ -10,7 +10,6 @@ import kotlin.coroutines.CoroutineContext
 
 class ClinicViewModel(private val apiInterface: ApiInterface, private val sharedPreference: WHealthSharedPreference) : ViewModel(), CoroutineScope
 {
-    var cId:Int=0
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default + SupervisorJob() + CoroutineExceptionHandler { _, throwable ->
@@ -20,8 +19,7 @@ class ClinicViewModel(private val apiInterface: ApiInterface, private val shared
     var getInactiveDocSuccessLiveData: MutableLiveData<GetAllClinicsResponse> = MutableLiveData()
 
 
-    fun getUsers() {
-        cId= sharedPreference.getCurrentUser().id
+    fun getUsers(cId:Int) {
         launch {
 
                 val response = apiInterface.getActiveDoctorsApi(cId)

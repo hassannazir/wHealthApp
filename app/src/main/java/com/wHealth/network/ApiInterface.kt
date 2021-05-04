@@ -51,8 +51,13 @@ interface ApiInterface {
 
     @GET("api/Data/Get")
     @Headers("Content-Type: application/json")
-    suspend fun getAvailableClinicsApi(
+    suspend fun getDoctorAvailableClinicsApi(
             @Query("doctorId") doctorId:Int
+    ): Response<GetAllClinicsResponse>
+
+    @GET("api/Data/Get")
+    @Headers("Content-Type: application/json")
+    suspend fun getAvailableClinicsApi(
     ): Response<GetAllClinicsResponse>
 
     @POST("api/Data/ActiveDoctors")

@@ -32,6 +32,7 @@
         <activity android:name=".activities.doctorprofile.DoctorProfileActivity" />
         <activity android:name=".activities.clinicschedule.ClinicScheduleActivity" />
         <activity android:name=".activities.ui.clinicschedulelist.ClinicScheduleListActivity" />
+        <activity android:name=".activities.clinicdoctors.ClinicDoctorListActivity"/>
     </application>
 
 </manifest>

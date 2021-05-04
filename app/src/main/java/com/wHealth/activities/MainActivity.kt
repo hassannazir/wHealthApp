@@ -53,6 +53,10 @@ class MainActivity : BaseActivity() {
             toolbar.title = "Main"
             loadFragment(ClinicFragment())
         }
+        else if(user?.type == "Patient"){
+            toolbar.title = "Main"
+            loadFragment(AllClinicFragment())
+        }
         //View Profile
         headerView.loggedinUserName.setOnClickListener{
 
@@ -72,6 +76,12 @@ class MainActivity : BaseActivity() {
         {
             nav_Menu.findItem(R.id.nav_allClinics).setVisible(false);
             nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
+        }
+        if(user.type=="Patient")
+        {
+            nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
+            nav_Menu.findItem(R.id.nav_workingDoctors).setVisible(false);
+            nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
         }
         // click listner for navigation drawer items
         nav_view.setNavigationItemSelectedListener {
