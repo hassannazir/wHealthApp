@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.clinic_item_view.view.*
 
 class AllClinicAdapter(private val sharedPreference: WHealthSharedPreference, private val cellClickListener:ClinicClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
 
-    private val clinicList = mutableListOf<AppUser>()
+    private var clinicList:List<Any> = listOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClinicViewHolder {
@@ -31,9 +31,9 @@ class AllClinicAdapter(private val sharedPreference: WHealthSharedPreference, pr
     }
 
     override fun onBindViewHolder(holder: ClinicViewHolder, position: Int) {
-        holder.bind(clinicList[position])
+        holder.bind(clinicList[position] as AppUser)
         holder.itemView.setOnClickListener {
-            cellClickListener.onClinicClickListener(clinicList[position])
+            cellClickListener.onClinicClickListener(clinicList[position] as AppUser)
         }
         val user=sharedPreference.getCurrentUser()
         if(user.type=="Patient")
@@ -41,7 +41,7 @@ class AllClinicAdapter(private val sharedPreference: WHealthSharedPreference, pr
             holder.itemView.viewAvailableDoctor.visibility=View.VISIBLE
         }
         holder.itemView.viewAvailableDoctor.setOnClickListener {
-            cellClickListener.onAvailableDoctorClickListener(clinicList[position])
+            cellClickListener.onAvailableDoctorClickListener(clinicList[position] as AppUser)
         }
         holder.itemView.scheduleClinicTiming.visibility=View.GONE
         holder.itemView.viewScheduleClinicTiming.visibility=View.GONE
@@ -53,13 +53,13 @@ class AllClinicAdapter(private val sharedPreference: WHealthSharedPreference, pr
         fun onClick(au:AppUser)
     }
 
-    fun setClinics(cList: List<AppUser>)
+    fun setClinics(list: List<Any>)
     {
-        clinicList.addAll(cList)
+        clinicList=list
         notifyDataSetChanged()
     }
 
-    fun getClinics():List<AppUser>
+    fun getClinics():List<Any>
     {
         return clinicList
     }

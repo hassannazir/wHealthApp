@@ -27,6 +27,7 @@ class AllClinicFragment : BaseFragment(), ClinicClickListener {
     lateinit var clinicAdapter: AllClinicAdapter
     private  val sharedPreference: WHealthSharedPreference by inject()
     private lateinit var clinicList: List<AppUser>
+    val fiteredClinicList: ArrayList<Any> = arrayListOf()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,9 +54,19 @@ class AllClinicFragment : BaseFragment(), ClinicClickListener {
             }
         })
         viewModel.getUsers()
-//        btnSearchClinic.setOnClickListener({
-//            var searchquery=searchClinic.
-//        })
+        btnSearchClinic.setOnClickListener {
+            searchClinic.clearFocus();
+            var searchquery=searchClinic.text.toString()
+            for(i in clinicList)
+            {
+                if(i.name.contains(searchquery, ignoreCase = true))
+                {
+                    fiteredClinicList.add(i)
+                }
+            }
+            clinicAdapter.setClinics(fiteredClinicList)
+
+        }
     }
 
 

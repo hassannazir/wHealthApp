@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.clinic_item_view.view.*
 
 class DoctorAdapter( private val cellClickListener: CellClickListener) : RecyclerView.Adapter<ClinicViewHolder>(){
 
-    private val clinicList = mutableListOf<AppUser>()
+    private var clinicList:List<Any> = listOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClinicViewHolder {
@@ -32,21 +32,21 @@ class DoctorAdapter( private val cellClickListener: CellClickListener) : Recycle
     }
 
     override fun onBindViewHolder(holder: ClinicViewHolder, position: Int) {
-        holder.bind(clinicList[position])
+        holder.bind(clinicList[position] as AppUser)
         holder.itemView.setOnClickListener {
-            cellClickListener.onCellClickListener(clinicList[position])
+            cellClickListener.onCellClickListener(clinicList[position] as AppUser)
         }
         holder.itemView.scheduleClinicTiming.setOnClickListener {
-            cellClickListener.onScheduleTimingClick(clinicList[position])
+            cellClickListener.onScheduleTimingClick(clinicList[position] as AppUser)
         }
         holder.itemView.viewScheduleClinicTiming.setOnClickListener {
-            cellClickListener.onViewScheduleTimingClick(clinicList[position])
+            cellClickListener.onViewScheduleTimingClick(clinicList[position] as AppUser)
         }
         }
 
-    fun setClinics(cList: List<AppUser>)
+    fun setClinics(list: List<Any>)
     {
-        clinicList.addAll(cList)
+        clinicList=list
         notifyDataSetChanged()
     }
 }

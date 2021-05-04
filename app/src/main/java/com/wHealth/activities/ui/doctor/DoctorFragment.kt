@@ -16,7 +16,10 @@ import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListActivity
 import com.wHealth.di.fragmentScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
+import kotlinx.android.synthetic.main.fragment_allclinic.*
 import kotlinx.android.synthetic.main.fragment_doctor.*
+import kotlinx.android.synthetic.main.fragment_doctor.btnSearchClinic
+import kotlinx.android.synthetic.main.fragment_doctor.searchClinic
 import org.koin.android.ext.android.inject
 
 //import com.wHealth.activities.R
@@ -34,6 +37,8 @@ class DoctorFragment : BaseFragment(),CellClickListener{
     private val viewModel: DoctorViewModel by fragmentScope.inject()
     lateinit var doctorAdapter: DoctorAdapter
     private  val sharedPreference: WHealthSharedPreference by inject()
+    private lateinit var clinicList: List<AppUser>
+    val fiteredClinicList: ArrayList<Any> = arrayListOf()
     override fun onCreateView(
 
         inflater: LayoutInflater,
@@ -55,13 +60,25 @@ class DoctorFragment : BaseFragment(),CellClickListener{
                 if (response.status) {
                     Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
                     doctorAdapter.setClinics(response.result)
-
+                    clinicList=response.result
                 } else {
                     Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
                 }
             })
             viewModel.getUsers()
+        btnSearchClinic.setOnClickListener {
+            searchClinic.clearFocus();
+            var searchquery=searchClinic.text.toString()
+            for(i in clinicList)
+            {
+                if(i.name.contains(searchquery, ignoreCase = true))
+                {
+                    fiteredClinicList.add(i)
+                }
+            }
+            doctorAdapter.setClinics(fiteredClinicList)
 
+        }
     }
 
     override fun onCellClickListener(data:AppUser) {
