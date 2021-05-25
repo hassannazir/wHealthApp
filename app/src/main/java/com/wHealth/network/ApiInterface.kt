@@ -23,16 +23,12 @@ interface ApiInterface {
         @Query("pass")pass: String
     ): Response<LoginResponse>
 
-
-
     //Logged in a User
     @GET("api/PasswordHandler/SendCodeToEmail")
     @Headers("Content-Type: application/json")
     suspend fun verifyUserApi(
             @Query("usrname") usrname: String
     ): Response<ForgotPasswordResponse>
-
-
 
     //Logged in a User
     @PUT("api/PasswordHandler/SaveUpdatedPassword")

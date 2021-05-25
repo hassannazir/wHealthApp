@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wHealth" >
+    package="com.wHealth">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,8 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_art"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WHealth" >
-        <activity android:name=".activities.SplashActivity"    android:theme="@style/Theme.WHealth.NoActionBar" >
+        android:theme="@style/Theme.WHealth">
+        <activity android:name=".activities.bookappointment.BookAppointmentActivity"></activity>
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/Theme.WHealth.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +35,7 @@
         <activity android:name=".activities.doctorprofile.DoctorProfileActivity" />
         <activity android:name=".activities.clinicschedule.ClinicScheduleActivity" />
         <activity android:name=".activities.ui.clinicschedulelist.ClinicScheduleListActivity" />
-        <activity android:name=".activities.clinicdoctors.ClinicDoctorListActivity"/>
+        <activity android:name=".activities.clinicdoctors.ClinicDoctorListActivity" />
     </application>
 
 </manifest>

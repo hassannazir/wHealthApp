@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wHealth.R
 import com.wHealth.activities.BaseActivity
+import com.wHealth.activities.bookappointment.BookAppointmentActivity
 import com.wHealth.activities.ui.clinics.ClinicViewModel
 import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListActivity
 import com.wHealth.di.activityScope
@@ -52,8 +53,8 @@ class ClinicDoctorListActivity : BaseActivity(), ClinicDoctorClickListener {
     }
 
     override fun onClinicdoctorClickListener(data: AppUser,clinic:Int) {
-        val act = Intent(this, ClinicScheduleListActivity::class.java)
-        act.putExtra("clickedClinic", data)
+        val act = Intent(this, BookAppointmentActivity::class.java)
+        act.putExtra("clickedDoctor", data)
         act.putExtra("Clinic", clinic)
         startActivity(act)
     }
