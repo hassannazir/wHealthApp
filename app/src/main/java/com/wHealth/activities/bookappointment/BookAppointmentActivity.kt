@@ -24,31 +24,36 @@ class BookAppointmentActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_appointment)
-        val clickedClinic = intent.getSerializableExtra("clickedDoctor") as AppUser
-        val doctor = intent.getSerializableExtra("Clinic") as Int
-        viewModel.getClinicSchedule(doctor,clickedClinic.id)
-//        viewModel.getInactiveDocSuccessLiveData.observe(this,androidx.lifecycle.Observer{response ->
-//            if (response.status) {
-//                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
-//                val dates = getDates(response.result.first().startDate, response.result.first().endDate)
-//                val enabledDates: ArrayList<CalendarDay> = ArrayList()
-//                if (dates != null) {
-//                    for(date in dates) {
-//                        enabledDates.add(CalendarDay(date));
-//                    }
-//                }
-//                calendarView.addDecorator(
-//                    AvailableDaysDecorator(
-//                        R.color.teal_700,
-//                        enabledDates
-//                    )
-//                )
-//            } else {
-//                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
-//            }
-//        })
-        //calendarView.addDecorator(AllDaysDisabledDecorator())
-        //calendarView.addDecorator(AvailableDaysDecorator(R.color.teal_700, days))
+        val clickeddoctor = intent.getSerializableExtra("clickedDoctor") as AppUser
+        val clinic = intent.getSerializableExtra("Clinic") as Int
+        viewModel.getClinicSchedule(clickeddoctor.id,clinic)
+        viewModel.getInactiveDocSuccessLiveData.observe(this,androidx.lifecycle.Observer{response ->
+            if (response.status) {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+                if(response.result.isNotEmpty())
+                {
+                    for(schedule in response.result)
+                    {
+                        val dates = getDates(schedule.startDate, schedule.endDate)
+                        val enabledDates: ArrayList<CalendarDay> = ArrayList()
+                        if (dates != null) {
+                            for(date in dates) {
+                                enabledDates.add(CalendarDay(date));
+                            }
+                        }
+                        calendarView.addDecorator(
+                            AvailableDaysDecorator(
+                                R.color.teal_700,
+                                enabledDates
+                            )
+                        )
+                    }
+                }
+            } else {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+        calendarView.addDecorator(AllDaysDisabledDecorator())
 
     }
     private fun getDates(
