@@ -12,3 +12,10 @@ val BookAppointmentModule = module {
         }
     }
 }
+val BookingTimeModule = module {
+    scope<BookingTimeActivity> {
+        viewModel {
+            BookScheduleViewModel(apiInterface = get(),sharedPreference = get())
+        }
+    }
+}

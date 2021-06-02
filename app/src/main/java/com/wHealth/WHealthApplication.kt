@@ -2,6 +2,7 @@ package com.wHealth
 
 import android.app.Application
 import com.wHealth.activities.bookappointment.BookAppointmentModule
+import com.wHealth.activities.bookappointment.BookingTimeModule
 import com.wHealth.activities.clinicdoctors.ClinicDoctorListActivity
 import com.wHealth.activities.clinicdoctors.ClinicDoctorListModule
 import com.wHealth.activities.clinicrequest.clinicRequestModule
@@ -39,7 +40,8 @@ class WHealthApplication : Application() {
                 ClinicScheduleModule,
                 ClinicScheduleListModule,
             ClinicDoctorListModule,
-            BookAppointmentModule
+            BookAppointmentModule,
+            BookingTimeModule
 
         )
 

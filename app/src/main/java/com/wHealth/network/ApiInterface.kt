@@ -114,5 +114,18 @@ interface ApiInterface {
             @Query("day") day: String,
             @Query("length") length: Int
     ): Response<ClinicReqResponse>
+
+    @POST("api/Requests/setDocSchedule")
+    @Headers("Content-Type: application/json")
+    suspend fun bookSchedule(
+        @Query("patientId") patientId: Int,
+        @Query("doctorId") doctorId: Int,
+        @Query("clinicId") clinicId: Int,
+        @Query("status") status: Int,
+        @Query("startTime") startTime: String,
+        @Query("endTime") endTime: String,
+        @Query("date") date: String,
+        @Query("scheduleId") scheduleId: Int
+    ): Response<ClinicReqResponse>
 }
 
