@@ -7,14 +7,15 @@ import android.text.InputType
 import android.widget.Toast
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.wHealth.R
+import com.wHealth.activities.BaseActivity
 import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListViewModel
 import com.wHealth.di.activityScope
 import kotlinx.android.synthetic.main.activity_booking_time.*
 import org.koin.androidx.viewmodel.scope.viewModel
 import java.util.*
 
-class BookingTimeActivity : AppCompatActivity() {
-   // private val viewModel: BookScheduleViewModel by activityScope.viewModel(this)
+class BookingTimeActivity : BaseActivity() {
+   private val viewModel: BookScheduleViewModel by activityScope.viewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
