@@ -28,7 +28,7 @@ class BookedAppointmentsViewModel(private val apiInterface: ApiInterface, privat
     fun getAppointments() {
         launch {
             var docId= sharedPreference.getCurrentUser().id
-                val  response = apiInterface.BookedAppointments(docId)
+                val  response = apiInterface.PendingAppointments(docId)
                 if (response.isSuccessful) {
                     response.body()?.let { response ->
                         getInactiveDocSuccessLiveData.postValue(response)
@@ -36,6 +36,20 @@ class BookedAppointmentsViewModel(private val apiInterface: ApiInterface, privat
                 } else {
                     getInactiveDocSuccessLiveData.postValue(null)
                 }
+        }
+    }
+    fun getBookedAppointments() {
+        launch {
+            var docId= sharedPreference.getCurrentUser().id
+
+            val response=apiInterface.BookingAppointments(docId)
+            if (response.isSuccessful) {
+                response.body()?.let { response ->
+                    getInactiveDocSuccessLiveData.postValue(response)
+                }
+            } else {
+                getInactiveDocSuccessLiveData.postValue(null)
+            }
         }
     }
     fun getPatientAppointments() {

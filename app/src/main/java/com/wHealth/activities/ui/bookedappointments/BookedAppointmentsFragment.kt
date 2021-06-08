@@ -22,7 +22,7 @@ import org.koin.android.ext.android.inject
 class BookedAppointmentsFragment : BaseFragment() , AppointmentClickListener {
     private val viewModel: BookedAppointmentsViewModel by fragmentScope.inject()
     lateinit var appointmentAdapter: BookedAppointmentsAdapter
-
+    var name=""
     private  val sharedPreference: WHealthSharedPreference by inject()
     companion object {
         fun newInstance() = BookedAppointmentsFragment()
@@ -31,10 +31,13 @@ class BookedAppointmentsFragment : BaseFragment() , AppointmentClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        name= getArguments()?.getString("name").toString()
         return inflater.inflate(R.layout.booked_appointments_fragment, container, false)
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         appointmentAdapter = BookedAppointmentsAdapter(sharedPreference,this)
         bookedAppointmentsRecyclerView.apply{
             layoutManager= LinearLayoutManager(activity)
@@ -55,7 +58,14 @@ class BookedAppointmentsFragment : BaseFragment() , AppointmentClickListener {
             viewModel.getPatientAppointments()
         }
         else{
-            viewModel.getAppointments()
+            if(name!=null)
+            {
+                viewModel.getBookedAppointments()
+            }
+            else{
+                viewModel.getAppointments()
+            }
+
         }
 
     }

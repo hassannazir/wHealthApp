@@ -78,14 +78,15 @@ class MainActivity : BaseActivity() {
         {
             nav_Menu.findItem(R.id.nav_allClinics).setVisible(false);
             nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
-            nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false);
+            nav_Menu.findItem(R.id.nav_pendingappointments).setVisible(false);
+            nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false)
         }
         if(user.type=="Patient")
         {
             nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
             nav_Menu.findItem(R.id.nav_workingDoctors).setVisible(false);
             nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
-
+            nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false)
         }
         // click listner for navigation drawer items
         nav_view.setNavigationItemSelectedListener {
@@ -110,8 +111,13 @@ class MainActivity : BaseActivity() {
                     closeDrawer()
                     true
                 }
-                R.id.nav_bookappointments -> {
+                R.id.nav_pendingappointments -> {
                     loadFragment(BookedAppointmentsFragment())
+                    closeDrawer()
+                    true
+                }
+                R.id.nav_bookappointments -> {
+                    loadFragmentExtra(BookedAppointmentsFragment())
                     closeDrawer()
                     true
                 }
@@ -151,6 +157,15 @@ class MainActivity : BaseActivity() {
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment)?.addToBackStack("")
             .commit()
+    }
+    private fun loadFragmentExtra(fragment: Fragment) {
+        var data:Bundle=Bundle()
+        data.putString("name","booked");
+        var fragmentmove:Fragment=fragment
+        fragmentmove.setArguments(data);
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragmentmove)?.addToBackStack("")
+            .commit()
+
     }
     private fun moveToLoginActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
