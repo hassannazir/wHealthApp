@@ -8,7 +8,7 @@ import org.koin.dsl.module
 val ClinicScheduleModule = module {
     scope<ClinicScheduleActivity> {
         viewModel {
-            ClinicScheduleListViewModel(apiInterface = get(),sharedPreference = get())
+            ClinicScheduleViewModel(apiInterface = get(),sharedPreference = get())
         }
     }
 }

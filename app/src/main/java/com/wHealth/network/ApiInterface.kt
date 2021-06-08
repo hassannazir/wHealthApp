@@ -56,6 +56,18 @@ interface ApiInterface {
     suspend fun getAvailableClinicsApi(
     ): Response<GetAllClinicsResponse>
 
+    @GET("api/Bookings/PatientsBookingRequests")
+    @Headers("Content-Type: application/json")
+    suspend fun BookedAppointments(
+        @Query("doc_id") did:Int
+    ): Response<BookAppointmentResponse>
+
+    @GET("api/Bookings/ListOfPatientAppointments")
+    @Headers("Content-Type: application/json")
+    suspend fun PatientBookedAppointments(
+        @Query("patientId") pid:Int
+    ): Response<BookAppointmentResponse>
+
     @POST("api/Data/ActiveDoctors")
     @Headers("Content-Type: application/json")
     suspend fun  getActiveDoctorsApi(
@@ -115,7 +127,7 @@ interface ApiInterface {
             @Query("length") length: Int
     ): Response<ClinicReqResponse>
 
-    @POST("api/Requests/setDocSchedule")
+    @POST("api/Bookings/BookAppointment")
     @Headers("Content-Type: application/json")
     suspend fun bookSchedule(
         @Query("patientId") patientId: Int,
@@ -123,9 +135,15 @@ interface ApiInterface {
         @Query("clinicId") clinicId: Int,
         @Query("status") status: Int,
         @Query("startTime") startTime: String,
-        @Query("endTime") endTime: String,
         @Query("date") date: String,
-        @Query("scheduleId") scheduleId: Int
+        @Query("endTime") endTime: String
+    ): Response<ClinicReqResponse>
+
+    @GET("api/Bookings/ApproveOrCancelPatientRequest")
+    @Headers("Content-Type: application/json")
+    suspend fun ApproveCancelAppointment(
+        @Query("appointmentId") appointmentId: Int,
+        @Query("status") status: Boolean
     ): Response<ClinicReqResponse>
 }
 

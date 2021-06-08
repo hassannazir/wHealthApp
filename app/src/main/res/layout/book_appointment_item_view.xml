@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view"
+    style="@style/CardViewStyle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientName"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="20sp"
+            tool:text="Ali Usman"
+            app:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clinicName"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:drawablePadding="5dp"
+            android:layout_below="@+id/patientName"
+            android:fontFamily="@font/roboto_light"
+            tool:text="clinix"
+            app:drawableStartCompat="@drawable/ic_baseline_access_time_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookingDate"
+            android:fontFamily="@font/roboto_light"
+            android:layout_below="@+id/clinicName"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            tool:text="12-15-21"
+            android:drawablePadding="5dp"
+            app:drawableStartCompat="@drawable/ic_baseline_view_day_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/startTime"
+            android:fontFamily="@font/roboto_light"
+            android:layout_below="@+id/bookingDate"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            tool:text="12:10"
+            android:drawablePadding="5dp"
+            app:drawableStartCompat="@drawable/ic_baseline_timelapse_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/endTime"
+            android:fontFamily="@font/roboto_light"
+            android:layout_below="@+id/startTime"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            tool:text="12:10"
+            android:drawablePadding="5dp"
+            app:drawableStartCompat="@drawable/ic_baseline_timelapse_24" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scheduleButtons"
+            android:layout_below="@+id/endTime"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="38sp"
+                android:text="Approve"
+                android:id="@+id/approveAppointment"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_margin="5dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="38sp"
+                android:text="Cancel"
+                android:layout_weight="1"
+                android:id="@+id/cancelAppointment"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

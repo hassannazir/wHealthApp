@@ -20,6 +20,8 @@ import com.wHealth.R
 import com.wHealth.activities.forgotpassword.ForgotPasswordActivity
 import com.wHealth.activities.login.LoginActivity
 import com.wHealth.activities.ui.allClinics.AllClinicFragment
+import com.wHealth.activities.ui.bookedappointments.BookedAppointmentsAdapter
+import com.wHealth.activities.ui.bookedappointments.BookedAppointmentsFragment
 import com.wHealth.activities.ui.doctor.DoctorFragment
 import com.wHealth.activities.ui.clinics.ClinicFragment
 import com.wHealth.activities.ui.doctorsrequest.DoctorRequestFragment
@@ -76,12 +78,14 @@ class MainActivity : BaseActivity() {
         {
             nav_Menu.findItem(R.id.nav_allClinics).setVisible(false);
             nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
+            nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false);
         }
         if(user.type=="Patient")
         {
             nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
             nav_Menu.findItem(R.id.nav_workingDoctors).setVisible(false);
             nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
+
         }
         // click listner for navigation drawer items
         nav_view.setNavigationItemSelectedListener {
@@ -106,14 +110,16 @@ class MainActivity : BaseActivity() {
                     closeDrawer()
                     true
                 }
+                R.id.nav_bookappointments -> {
+                    loadFragment(BookedAppointmentsFragment())
+                    closeDrawer()
+                    true
+                }
                 else -> {
                     false
                 }
             }
         }
-
-
-
     }
 
 

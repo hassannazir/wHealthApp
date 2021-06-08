@@ -42,7 +42,6 @@ class AllClinicFragment : BaseFragment(), ClinicClickListener {
         allClinicRecyclerView.apply{
             layoutManager= LinearLayoutManager(activity)
             adapter = clinicAdapter
-
         }
         viewModel.getInactiveDocSuccessLiveData.observe(viewLifecycleOwner, Observer { response ->
             if (response.status) {

@@ -3,6 +3,7 @@ import ApiInterface
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wHealth.activities.register.RegisterViewModel.Companion.CLINIC
+import com.wHealth.network.response.ClinicReqResponse
 import com.wHealth.network.response.ClinicScheduleListResponse
 import com.wHealth.network.response.GetAllClinicsResponse
 import com.wHealth.sharedpreferences.WHealthSharedPreference
@@ -19,6 +20,7 @@ class ClinicScheduleListViewModel(private val apiInterface: ApiInterface, privat
         }
 
     var getInactiveDocSuccessLiveData: MutableLiveData<ClinicScheduleListResponse> = MutableLiveData()
+    var getAppointmentSuccessLiveData: MutableLiveData<ClinicReqResponse> = MutableLiveData()
 
 
     fun getClinicSchedule(docId:Int,clinicId:Int?) {

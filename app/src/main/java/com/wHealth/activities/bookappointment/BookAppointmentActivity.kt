@@ -14,6 +14,7 @@ import com.wHealth.di.activityScope
 import com.wHealth.helper.AllDaysDisabledDecorator
 import com.wHealth.helper.AvailableDaysDecorator
 import com.wHealth.model.AppUser
+import com.wHealth.network.response.Booking
 import kotlinx.android.synthetic.main.activity_book_appointment.*
 import org.koin.androidx.viewmodel.scope.viewModel
 import java.text.DateFormat
@@ -31,6 +32,18 @@ class BookAppointmentActivity : BaseActivity(),OnDateSelectedListener {
         val clickeddoctor = intent.getSerializableExtra("clickedDoctor") as AppUser
         val clinic = intent.getSerializableExtra("Clinic") as Int
         viewModel.getClinicSchedule(clickeddoctor.id,clinic)
+         viewModel.getAppointmentSuccessLiveData.observe(this,androidx.lifecycle.Observer{response ->
+             if(response.status)
+             {
+                 Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+
+             }
+             else{
+                 Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+
+             }
+
+         })
         viewModel.getInactiveDocSuccessLiveData.observe(this,androidx.lifecycle.Observer{response ->
             if (response.status) {
                 Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
@@ -66,7 +79,7 @@ class BookAppointmentActivity : BaseActivity(),OnDateSelectedListener {
                 val act = Intent(this, BookingTimeActivity::class.java)
                 act.putExtra("clickedDoctor", clickeddoctor.id)
                 act.putExtra("Clinic", clinic)
-                act.putExtra("date", date)
+                act.putExtra("date", date.date)
                 startActivity(act)
             }
         }
@@ -108,4 +121,6 @@ class BookAppointmentActivity : BaseActivity(),OnDateSelectedListener {
         }
         return dates
     }
+
+
 }

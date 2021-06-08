@@ -20,5 +20,9 @@
             android:id="@+id/nav_workingClinics"
             android:icon="@drawable/ic_art"
             android:title="Working Clinics" />
+        <item
+            android:id="@+id/nav_bookappointments"
+            android:icon="@drawable/ic_art"
+            android:title="Booked Appointments" />
     </group>
 </menu>

@@ -20,7 +20,7 @@ class BookScheduleViewModel(private val apiInterface: ApiInterface, private val 
     fun booktiming(doctorId:Int,clinicId:Int,status:Int,startTime:String,endTime:String,date:String,scheduleId:Int) {
         var patientId= sharedPreference.getCurrentUser().id
         launch {
-            val response = apiInterface.bookSchedule(patientId,doctorId,clinicId,status,startTime,endTime,date,scheduleId)
+            val response = apiInterface.bookSchedule(patientId,doctorId,clinicId,status,startTime,date,endTime)
             if (response.isSuccessful) {
                 response.body()?.let { response ->
                     clinicScheduleSuccessLiveData.postValue(response)

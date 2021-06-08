@@ -136,8 +136,9 @@ class  ClinicScheduleActivity : BaseActivity() {
         if(startdate>enddate)
         {
             Toast.makeText(this, "Sorry! can't proceed. Start Date is greater than end Date", Toast.LENGTH_LONG).show()
+            return false
         }
-        return false
+        return true
     }
 
     fun pickdate() {
