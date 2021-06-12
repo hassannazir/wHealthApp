@@ -81,6 +81,7 @@ class MainActivity : BaseActivity() {
             nav_Menu.findItem(R.id.nav_workingClinics).setVisible(false);
             nav_Menu.findItem(R.id.nav_pendingappointments).setVisible(false);
             nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false)
+            nav_Menu.findItem(R.id.nav_feedback).setVisible(false)
         }
         if(user.type=="Patient")
         {
@@ -88,6 +89,7 @@ class MainActivity : BaseActivity() {
             nav_Menu.findItem(R.id.nav_workingDoctors).setVisible(false);
             nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
             nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false)
+            nav_Menu.findItem(R.id.nav_feedback).setVisible(false)
         }
 
         nav_view.setNavigationItemSelectedListener {
