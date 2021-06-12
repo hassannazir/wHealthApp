@@ -14,13 +14,11 @@ import com.wHealth.di.activityScope
 import com.wHealth.helper.AllDaysDisabledDecorator
 import com.wHealth.helper.AvailableDaysDecorator
 import com.wHealth.model.AppUser
-import com.wHealth.network.response.Booking
 import kotlinx.android.synthetic.main.activity_book_appointment.*
 import org.koin.androidx.viewmodel.scope.viewModel
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -51,9 +49,16 @@ class BookAppointmentActivity : BaseActivity(),OnDateSelectedListener {
                 {
                     for(schedule in response.result)
                     {
-                        val dates = getDates(schedule.startDate, schedule.endDate)
                         val enabledDates: ArrayList<CalendarDay> = ArrayList()
-                        if (dates != null) {
+                        var dates:List<Date>?=ArrayList()
+                        if(schedule.recurring==true)
+                        {
+                            dates = getRecurringDates(schedule.startDate)
+                        }
+                        else{
+                            dates = getDates(schedule.startDate, schedule.endDate)
+                        }
+                       if (dates != null) {
                             for(date in dates) {
                                 enabledDates.add(CalendarDay(date));
                             }
@@ -121,6 +126,34 @@ class BookAppointmentActivity : BaseActivity(),OnDateSelectedListener {
         }
         return dates
     }
-
+    private fun getRecurringDates(
+        dateString1: String?
+    ): List<Date>? {
+        val dates = ArrayList<Date>()
+        val df1: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+        var date1: Date? = null
+        var date2: Date? = null
+        try {
+            date1 = df1.parse(dateString1)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+        if (date1 != null) {
+            dates.add(date1)
+        }
+        val c1 = Calendar.getInstance()
+        c1.time = date1
+        c1.add(Calendar.DATE, 7)
+        dates.add(c1.time)
+        val c2 = Calendar.getInstance()
+        c2.time = c1.time
+        c2.add(Calendar.DATE, 7)
+        dates.add(c2.time)
+        val c3 = Calendar.getInstance()
+        c3.time = c2.time
+        c3.add(Calendar.DATE, 7)
+        dates.add(c3.time)
+        return dates
+    }
 
 }

@@ -3,6 +3,7 @@ import com.wHealth.model.*
 import com.wHealth.network.response.*
 import retrofit2.Response
 import retrofit2.http.*
+import java.util.*
 
 
 interface ApiInterface {
@@ -140,9 +141,9 @@ interface ApiInterface {
         @Query("doctorId") doctorId: Int,
         @Query("clinicId") clinicId: Int,
         @Query("status") status: Int,
-        @Query("startTime") startTime: String,
-        @Query("date") date: String,
-        @Query("endTime") endTime: String
+        @Query("startTime") startTime: String?,
+        @Query("date") date: String?,
+        @Query("endTime") endTime: String?
     ): Response<ClinicReqResponse>
 
     @GET("api/Bookings/ApproveOrCancelPatientRequest")
@@ -167,5 +168,13 @@ interface ApiInterface {
     suspend fun FeedbackList(
         @Query("doctorId") did:Int
     ): Response<FeedbackListResponse>
+
+    @GET("api/Bookings/GetAllSlots")
+    @Headers("Content-Type: application/json")
+    suspend fun GetSlots(
+        @Query("doctorId") dId:Int,
+        @Query("clinicId") cId:Int,
+        @Query("date") date:String
+    ): Response<BookingSlotsResponse>
 }
 

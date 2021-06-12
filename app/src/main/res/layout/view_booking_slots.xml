@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/slotCard"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/teal_700"
+    app:contentPadding="10dp"
+    android:layout_margin="10dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Slot Timings: "
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slotStartTime"
+            android:text="12:15"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text=" - "
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slotEndTime"
+            android:text="12:30"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
