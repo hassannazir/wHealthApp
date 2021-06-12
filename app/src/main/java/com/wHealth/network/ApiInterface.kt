@@ -151,5 +151,21 @@ interface ApiInterface {
         @Query("appointmentId") appointmentId: Int,
         @Query("status") status: Boolean
     ): Response<ClinicReqResponse>
+
+    @GET("api/Bookings/PatientFeedback")
+    @Headers("Content-Type: application/json")
+    suspend fun submitFeedback(
+        @Query("patientId") patientId: Int,
+        @Query("doctorId") doctorId: Int,
+        @Query("clinicId") clinicId: Int,
+        @Query("rating") rating: Float,
+        @Query("review") review: String
+    ): Response<ClinicReqResponse>
+
+    @GET("api/Bookings/FeedbackList")
+    @Headers("Content-Type: application/json")
+    suspend fun FeedbackList(
+        @Query("doctorId") did:Int
+    ): Response<FeedbackListResponse>
 }
 

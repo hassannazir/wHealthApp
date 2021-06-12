@@ -28,5 +28,9 @@
             android:id="@+id/nav_bookappointments"
             android:icon="@drawable/ic_art"
             android:title="Booked Appointments" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_art"
+            android:title="Feedbacks" />
     </group>
 </menu>

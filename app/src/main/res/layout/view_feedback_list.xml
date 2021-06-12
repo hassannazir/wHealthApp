@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view"
+    style="@style/CardViewStyle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientName"
+            android:textColor="@color/teal_300"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="20sp"
+            tool:text="Ali MAzhar"
+            app:drawableStartCompat="@drawable/ic_baseline_person_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clinicName"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:drawablePadding="5dp"
+            android:layout_below="@+id/patientName"
+            android:fontFamily="@font/roboto_light"
+            tool:text="softi Clinic" />
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating"
+            android:fontFamily="@font/roboto_light"
+            android:layout_below="@+id/clinicName"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:textColor="@color/black"
+            tool:text="Wednessday"
+            android:drawablePadding="5dp"
+            app:drawableStartCompat="@drawable/ic_baseline_view_day_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/review"
+            android:fontFamily="@font/roboto_light"
+            android:layout_below="@+id/rating"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            tool:text="very good"
+            android:drawablePadding="5dp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

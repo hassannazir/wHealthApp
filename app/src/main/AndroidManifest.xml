@@ -46,6 +46,7 @@
         <activity android:name=".activities.clinicschedule.ClinicScheduleActivity" />
         <activity android:name=".activities.ui.clinicschedulelist.ClinicScheduleListActivity" />
         <activity android:name=".activities.clinicdoctors.ClinicDoctorListActivity" />
+        <activity android:name=".activities.ui.ratedoctors.RateDoctorsActivity" />
     </application>
 
 </manifest>

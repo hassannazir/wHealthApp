@@ -25,6 +25,7 @@ import com.wHealth.activities.ui.bookedappointments.BookedAppointmentsFragment
 import com.wHealth.activities.ui.doctor.DoctorFragment
 import com.wHealth.activities.ui.clinics.ClinicFragment
 import com.wHealth.activities.ui.doctorsrequest.DoctorRequestFragment
+import com.wHealth.activities.ui.feedbacklist.FeedbackListFragment
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -88,7 +89,7 @@ class MainActivity : BaseActivity() {
             nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
             nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false)
         }
-        // click listner for navigation drawer items
+
         nav_view.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_workingDoctors ->{
@@ -118,6 +119,11 @@ class MainActivity : BaseActivity() {
                 }
                 R.id.nav_bookappointments -> {
                     loadFragmentExtra(BookedAppointmentsFragment())
+                    closeDrawer()
+                    true
+                }
+                R.id.nav_feedback -> {
+                    loadFragmentExtra(FeedbackListFragment())
                     closeDrawer()
                     true
                 }

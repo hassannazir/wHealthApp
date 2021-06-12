@@ -17,6 +17,8 @@ import com.wHealth.activities.ui.clinics.clinicsModule
 import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListModule
 import com.wHealth.activities.ui.doctor.doctorModule
 import com.wHealth.activities.ui.doctorsrequest.doctorRequestModule
+import com.wHealth.activities.ui.feedbacklist.FeedbacklistModule
+import com.wHealth.activities.ui.ratedoctors.RateDoctorsModule
 import com.wHealth.activities.updateprofile.updateProfileModule
 import com.wHealth.di.appModule
 import org.koin.android.ext.koin.androidContext
@@ -43,7 +45,9 @@ class WHealthApplication : Application() {
             ClinicDoctorListModule,
             BookAppointmentModule,
             BookingTimeModule,
-            BookedAppointmentModule
+            BookedAppointmentModule,
+            RateDoctorsModule,
+            FeedbacklistModule
 
         )
 

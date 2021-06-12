@@ -36,27 +36,20 @@ class ClinicDoctorAdapter( private val cellClickListener: ClinicDoctorClickListe
         if(sharedPreference.getCurrentUser().type=="Patient")
         {
             holder.itemView.viewDoctorSchedule.visibility=View.VISIBLE
+            holder.itemView.rateDoctor.visibility=View.VISIBLE
         }
         holder.itemView.viewDoctorSchedule.setOnClickListener {
             cellClickListener.onClinicdoctorClickListener(clinicList[position],clinic)
         }
-
+        holder.itemView.rateDoctor.setOnClickListener{
+            cellClickListener.onratedoctorClickListener(clinicList[position],clinic)
         }
-
-    public interface onClickListener
-    {
-        fun onClick(au:AppUser)
     }
 
     fun setClinics(cList: List<AppUser>)
     {
         clinicList.addAll(cList)
         notifyDataSetChanged()
-    }
-
-    fun getClinics():List<AppUser>
-    {
-        return clinicList
     }
 }
 // Describes an item view and its place within the RecyclerView

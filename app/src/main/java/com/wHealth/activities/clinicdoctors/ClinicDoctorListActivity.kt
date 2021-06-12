@@ -9,10 +9,12 @@ import com.wHealth.activities.BaseActivity
 import com.wHealth.activities.bookappointment.BookAppointmentActivity
 import com.wHealth.activities.ui.clinics.ClinicViewModel
 import com.wHealth.activities.ui.clinicschedulelist.ClinicScheduleListActivity
+import com.wHealth.activities.ui.ratedoctors.RateDoctorsActivity
 import com.wHealth.di.activityScope
 import com.wHealth.model.AppUser
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_clinic.*
+import kotlinx.android.synthetic.main.doctor_item_view.*
 import org.koin.android.ext.android.inject
 
 
@@ -54,6 +56,13 @@ class ClinicDoctorListActivity : BaseActivity(), ClinicDoctorClickListener {
 
     override fun onClinicdoctorClickListener(data: AppUser,clinic:Int) {
         val act = Intent(this, BookAppointmentActivity::class.java)
+        act.putExtra("clickedDoctor", data)
+        act.putExtra("Clinic", clinic)
+        startActivity(act)
+    }
+
+    override fun onratedoctorClickListener(data: AppUser, clinic: Int) {
+        val act = Intent(this, RateDoctorsActivity::class.java)
         act.putExtra("clickedDoctor", data)
         act.putExtra("Clinic", clinic)
         startActivity(act)
