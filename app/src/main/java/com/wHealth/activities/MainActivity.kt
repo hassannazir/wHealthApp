@@ -26,6 +26,7 @@ import com.wHealth.activities.ui.doctor.DoctorFragment
 import com.wHealth.activities.ui.clinics.ClinicFragment
 import com.wHealth.activities.ui.doctorsrequest.DoctorRequestFragment
 import com.wHealth.activities.ui.feedbacklist.FeedbackListFragment
+import com.wHealth.activities.ui.removeclinic.RemoveClinicFragment
 import com.wHealth.sharedpreferences.WHealthSharedPreference
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -74,6 +75,7 @@ class MainActivity : BaseActivity() {
         {
             nav_Menu.findItem(R.id.nav_workingDoctors).setVisible(false);
             nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
+            nav_Menu.findItem(R.id.nav_removeClinic).setVisible(false)
         }
         if(user.type=="Clinic")
         {
@@ -90,6 +92,7 @@ class MainActivity : BaseActivity() {
             nav_Menu.findItem(R.id.nav_newRequests).setVisible(false);
             nav_Menu.findItem(R.id.nav_bookappointments).setVisible(false)
             nav_Menu.findItem(R.id.nav_feedback).setVisible(false)
+            nav_Menu.findItem(R.id.nav_removeClinic).setVisible(false)
         }
 
         nav_view.setNavigationItemSelectedListener {
@@ -126,6 +129,11 @@ class MainActivity : BaseActivity() {
                 }
                 R.id.nav_feedback -> {
                     loadFragmentExtra(FeedbackListFragment())
+                    closeDrawer()
+                    true
+                }
+                R.id.nav_removeClinic -> {
+                    loadFragmentExtra(RemoveClinicFragment())
                     closeDrawer()
                     true
                 }
