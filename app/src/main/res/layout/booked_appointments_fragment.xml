@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".activities.ui.bookedappointments.BookedAppointmentsFragment">
 
     <TextView
@@ -13,6 +14,7 @@
         style="@style/ActivityHeading"
         android:textAlignment="center"
         android:padding="8dp"
+        android:id="@+id/pagetitle"
         android:background="@color/teal_700"
         android:layout_margin="8dp"/>
     <androidx.recyclerview.widget.RecyclerView

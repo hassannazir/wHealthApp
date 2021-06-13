@@ -118,12 +118,12 @@ class MainActivity : BaseActivity() {
                     true
                 }
                 R.id.nav_pendingappointments -> {
-                    loadFragment(BookedAppointmentsFragment())
+                    loadFragmentExtraPending(BookedAppointmentsFragment())
                     closeDrawer()
                     true
                 }
                 R.id.nav_bookappointments -> {
-                    loadFragmentExtra(BookedAppointmentsFragment())
+                    loadFragmentExtraBooked(BookedAppointmentsFragment())
                     closeDrawer()
                     true
                 }
@@ -144,6 +144,22 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun loadFragmentExtraPending(bookedAppointmentsFragment: BookedAppointmentsFragment) {
+        var data:Bundle=Bundle()
+        data.putString("name","pending");
+        var fragmentmove:Fragment=bookedAppointmentsFragment
+        fragmentmove.setArguments(data);
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragmentmove)?.addToBackStack("")
+            .commit()
+    }
+    private fun loadFragmentExtraBooked(bookedAppointmentsFragment: BookedAppointmentsFragment) {
+        var data:Bundle=Bundle()
+        data.putString("name","booked");
+        var fragmentmove:Fragment=bookedAppointmentsFragment
+        fragmentmove.setArguments(data);
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragmentmove)?.addToBackStack("")
+            .commit()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_settings -> {

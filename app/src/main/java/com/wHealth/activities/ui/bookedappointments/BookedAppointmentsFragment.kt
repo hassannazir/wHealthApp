@@ -58,12 +58,14 @@ class BookedAppointmentsFragment : BaseFragment() , AppointmentClickListener {
             viewModel.getPatientAppointments()
         }
         else{
-            if(name!=null)
+            if(name=="booked")
             {
+                pagetitle.text="Booked Appointments"
                 viewModel.getBookedAppointments()
             }
-            else{
-                viewModel.getAppointments()
+            else if(name=="pending"){
+                pagetitle.text="Pending Appointments"
+                viewModel.getPendingAppointments()
             }
 
         }

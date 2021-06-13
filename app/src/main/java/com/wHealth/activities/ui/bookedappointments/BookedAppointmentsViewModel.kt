@@ -25,7 +25,7 @@ class BookedAppointmentsViewModel(private val apiInterface: ApiInterface, privat
     var getAppointmentSuccessLiveData: MutableLiveData<ClinicReqResponse> = MutableLiveData()
 
 
-    fun getAppointments() {
+    fun getPendingAppointments() {
         launch {
             var docId= sharedPreference.getCurrentUser().id
                 val  response = apiInterface.PendingAppointments(docId)
