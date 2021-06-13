@@ -51,27 +51,37 @@ class BookedAppointmentsFragment : BaseFragment() , AppointmentClickListener {
                 Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
             }
         })
-        val user=sharedPreference.getCurrentUser()
-
-        if(user?.type == "Patient")
-        {
-            viewModel.getPatientAppointments()
-        }
-        else{
-            if(name=="booked")
-            {
-                pagetitle.text="Booked Appointments"
-                viewModel.getBookedAppointments()
+        viewModel.getAppointmentSuccessLiveData.observe(viewLifecycleOwner, Observer { response ->
+            if (response.status) {
+                Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
+                getlist()
+            } else {
+                Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
             }
-            else if(name=="pending"){
-                pagetitle.text="Pending Appointments"
-                viewModel.getPendingAppointments()
-            }
-
-        }
-
+        })
+        getlist()
     }
+     fun getlist(){
+         val user=sharedPreference.getCurrentUser()
 
+         if(user?.type == "Patient")
+         {
+             viewModel.getPatientAppointments()
+         }
+         else{
+             if(name=="booked")
+             {
+                 pagetitle.text="Booked Appointments"
+                 viewModel.getBookedAppointments()
+             }
+             else if(name=="pending"){
+                 pagetitle.text="Pending Appointments"
+                 viewModel.getPendingAppointments()
+             }
+
+         }
+
+     }
     override fun onApproveClickListener(data: Booking) {
         viewModel.approveRequest(data.appointmentId,true)
     }
