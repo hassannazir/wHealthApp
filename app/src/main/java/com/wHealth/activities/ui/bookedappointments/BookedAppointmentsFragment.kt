@@ -46,7 +46,7 @@ class BookedAppointmentsFragment : BaseFragment() , AppointmentClickListener {
         viewModel.getInactiveDocSuccessLiveData.observe(viewLifecycleOwner, Observer { response ->
             if (response.status) {
                 Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
-                appointmentAdapter.setClinics(response.result)
+                appointmentAdapter.setClinics(response.result,name)
             } else {
                 Toast.makeText(this.activity, response.message, Toast.LENGTH_SHORT).show()
             }

@@ -66,7 +66,7 @@ interface ApiInterface {
     @GET("api/Bookings/GetBookedAppointments")
     @Headers("Content-Type: application/json")
     suspend fun BookingAppointments(
-        @Query("doc_id") did:Int
+        @Query("doctorId") did:Int
     ): Response<BookAppointmentResponse>
 
     @GET("api/Bookings/ListOfPatientAppointments")

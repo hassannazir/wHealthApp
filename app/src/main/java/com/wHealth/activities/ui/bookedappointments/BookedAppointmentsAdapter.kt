@@ -21,6 +21,7 @@ class BookedAppointmentsAdapter (
     val user=sharedPreference.getCurrentUser()
 
     var clinicList: List<Booking> = listOf()
+    lateinit var stringName:String
 
     class ClinicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val patientnameTextView: TextView = itemView.findViewById(R.id.patientName)
@@ -46,17 +47,23 @@ class BookedAppointmentsAdapter (
     override fun getItemCount(): Int {
         return clinicList.size
     }
-    fun setClinics(cList: List<Booking>)
+    fun setClinics(cList: List<Booking>,name: String)
     {
+        stringName=name
         clinicList = cList
         notifyDataSetChanged()
     }
     override fun onBindViewHolder(holder: ClinicViewHolder, position: Int) {
         holder.bind(clinicList[position])
+
         if(user.type=="Patient")
         {
             holder.itemView.approveAppointment.visibility=View.GONE
             holder.itemView.cancelAppointment.visibility=View.GONE
+        }
+        if(stringName=="booked")
+        {
+            holder.itemView.appointmentButtons.visibility=View.GONE
         }
         holder.itemView.approveAppointment.setOnClickListener {
             cellClickListener.onApproveClickListener(clinicList[position] as Booking)
@@ -64,6 +71,8 @@ class BookedAppointmentsAdapter (
         holder.itemView.cancelAppointment.setOnClickListener {
             cellClickListener.onCancelClickListener(clinicList[position] as Booking)
         }
+
+
     }
 
 }
